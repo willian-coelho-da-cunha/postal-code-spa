@@ -1,1 +1,27 @@
-<p>city-form works!</p>
+<main>
+  <section>
+    <app-cep-form-field
+      [ipLabel]="'Zip code'"
+      [ipRequired]="true">
+    </app-cep-form-field>
+
+    <app-text-form-field
+      [ipLabel]="'Name'"
+      [ipRequired]="true">
+    </app-text-form-field>
+  </section>
+
+  <section>
+    <app-cancel-button
+      [ipLabel]="Cancel"
+      [ipDisabled]="false"
+      (opClick)="cancel()">
+    </app-cancel-button>
+
+    <app-submit-button
+      [ipLabel]="Save"
+      [ipDisabled]="false"
+      (opClick)="save()">
+    </app-submit-button>
+  </section>
+</main>

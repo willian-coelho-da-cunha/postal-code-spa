@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-text-form-field',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextFormFieldComponent implements OnInit {
 
+  public textFormField = new FormControl('');
+
+  @Input() public ipLabel = '';
+
+  @Input() public ipRequired = false;
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  public getValue(): string {
+    return this.textFormField.value;
+  }
 }

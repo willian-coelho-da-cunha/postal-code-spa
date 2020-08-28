@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'trd-front-cep';
+
+  public title = 'trd-front-cep';
 }

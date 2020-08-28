@@ -7,4 +7,16 @@
     [mask]="'00000-000'"
     [required]="ipRequired"
     [formControl]="cepFormField" />
+
+  <mat-error *ngIf="cepFormField?.invalid">
+    {{
+      cepFormField.hasError('required')
+        ? 'You must enter a value!'
+        : cepFormField.hasError('mask')
+          ? 'Field value must fill the mask!'
+          : cepFormField.hasError('cep')
+            ? 'You must enter a valid cep! (100.000 / 999.999)'
+            : ''
+    }}
+  </mat-error>
 </mat-form-field>

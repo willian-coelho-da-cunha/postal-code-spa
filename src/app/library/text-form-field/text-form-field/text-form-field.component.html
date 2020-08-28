@@ -6,4 +6,12 @@
     [type]="'text'"
     [required]="ipRequired"
     [formControl]="textFormField" />
+
+  <mat-error *ngIf="textFormField?.invalid">
+    {{
+      textFormField.hasError('required')
+        ? 'You must enter a value!'
+        : ''
+    }}
+  </mat-error>
 </mat-form-field>

@@ -1,12 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms'
+import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-text-form-field',
   templateUrl: './text-form-field.component.html',
-  styleUrls: ['./text-form-field.component.css']
+  styleUrls: ['./text-form-field.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextFormFieldComponent implements OnInit {
+export class TextFormFieldComponent implements OnChanges {
 
   public textFormField = new FormControl('');
 
@@ -14,11 +15,22 @@ export class TextFormFieldComponent implements OnInit {
 
   @Input() public ipRequired = false;
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {
+      if (changes['ipRequired'].currentValue === true) {
+        this.textFormField.setValidators([ Validators.required ]);
+      } else {
+        this.textFormField.setValidators([ ]);
+      }
+      this.textFormField.updateValueAndValidity();
+    }
+  }
 
   public getValue(): string {
     return this.textFormField.value;
+  }
+
+  public isValid(): boolean {
+    return this.textFormField.valid;
   }
 }

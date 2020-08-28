@@ -1,10 +1,11 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-email-form-field',
   templateUrl: './email-form-field.component.html',
-  styleUrls: ['./email-form-field.component.css']
+  styleUrls: ['./email-form-field.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmailFormFieldComponent implements OnChanges {
 
@@ -27,5 +28,9 @@ export class EmailFormFieldComponent implements OnChanges {
 
   public getValue(): string {
     return this.emailFormField.value;
+  }
+
+  public isValid(): boolean {
+    return this.emailFormField.valid;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 
 export function cepValidator(): ValidatorFn {
@@ -13,7 +13,8 @@ export function cepValidator(): ValidatorFn {
 @Component({
   selector: 'app-cep-form-field',
   templateUrl: './cep-form-field.component.html',
-  styleUrls: ['./cep-form-field.component.css']
+  styleUrls: ['./cep-form-field.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CepFormFieldComponent implements OnChanges {
 
@@ -36,5 +37,9 @@ export class CepFormFieldComponent implements OnChanges {
 
   public getValue(): number {
     return this.cepFormField.value;
+  }
+
+  public isValid(): boolean {
+    return this.cepFormField.valid;
   }
 }

@@ -1,1 +1,21 @@
-<p>login works!</p>
+<main>
+  <section>
+    <app-email-form-field
+      [ipLabel]="'Your e-mail address'"
+      [ipRequired]="true">
+    </app-email-form-field>
+
+    <app-password-form-field
+      [ipLabel]="'Your password'"
+      [ipRequired]="true">
+    </app-password-form-field>
+
+    <section>
+      <app-submit-button
+        [ipLabel]="'Log In'"
+        [ipDisabled]="false"
+        (opClick)="login()">
+      </app-submit-button>
+    </section>
+  </section>
+</main>

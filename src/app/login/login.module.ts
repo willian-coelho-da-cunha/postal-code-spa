@@ -2,14 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
+
+import { SubmitButtonModule } from '../library/submit-button/submit-button.module';
+import { EmailFormFieldModule } from '../library/email-form-field/email-form-field.module';
+import { PasswordFormFieldModule } from '../library/password-form-field/password-form-field.module';
+
 import { LoginComponent } from './login/login.component';
 
-
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [
+    LoginComponent
+  ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    SubmitButtonModule,
+    EmailFormFieldModule,
+    PasswordFormFieldModule
   ]
 })
 export class LoginModule { }

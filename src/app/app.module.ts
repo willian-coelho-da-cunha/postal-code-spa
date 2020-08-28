@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -13,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaskModule.forRoot()
   ],
   bootstrap: [
     AppComponent

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
+
 import { SubmitButtonComponent } from './submit-button/submit-button.component';
 
-
-
 @NgModule({
-  declarations: [SubmitButtonComponent],
+  declarations: [
+    SubmitButtonComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ]
 })
 export class SubmitButtonModule { }

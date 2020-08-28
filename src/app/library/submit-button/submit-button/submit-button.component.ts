@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-submit-button',
   templateUrl: './submit-button.component.html',
   styleUrls: ['./submit-button.component.css']
 })
-export class SubmitButtonComponent implements OnInit {
+export class SubmitButtonComponent {
 
-  constructor() { }
+  @Input() public ipLabel = '';
 
-  ngOnInit(): void {
-  }
-
+  @Input() public ipDisabled = true;
 }

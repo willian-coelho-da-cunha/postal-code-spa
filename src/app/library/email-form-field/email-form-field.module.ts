@@ -16,6 +16,9 @@ import { EmailFormFieldComponent } from './email-form-field/email-form-field.com
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule
+  ],
+  exports: [
+    EmailFormFieldComponent
   ]
 })
 export class EmailFormFieldModule { }

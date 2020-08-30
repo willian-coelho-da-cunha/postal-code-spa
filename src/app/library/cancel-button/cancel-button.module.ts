@@ -12,6 +12,9 @@ import { CancelButtonComponent } from './cancel-button/cancel-button.component';
   imports: [
     CommonModule,
     MatButtonModule
+  ],
+  exports: [
+    CancelButtonComponent
   ]
 })
 export class CancelButtonModule { }

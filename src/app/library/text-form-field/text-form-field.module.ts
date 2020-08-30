@@ -16,6 +16,9 @@ import { TextFormFieldComponent } from './text-form-field/text-form-field.compon
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule
+  ],
+  exports: [
+    TextFormFieldComponent
   ]
 })
 export class TextFormFieldModule { }

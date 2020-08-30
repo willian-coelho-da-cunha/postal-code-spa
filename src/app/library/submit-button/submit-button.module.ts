@@ -12,6 +12,9 @@ import { SubmitButtonComponent } from './submit-button/submit-button.component';
   imports: [
     CommonModule,
     MatButtonModule
+  ],
+  exports: [
+    SubmitButtonComponent
   ]
 })
 export class SubmitButtonModule { }

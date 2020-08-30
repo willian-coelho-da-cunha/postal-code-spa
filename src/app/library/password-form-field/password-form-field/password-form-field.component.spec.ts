@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +26,7 @@ describe('Password form field component ... ', () => {
           imports: [
             CommonModule,
             ReactiveFormsModule,
+            BrowserAnimationsModule,
             MatIconModule,
             MatInputModule,
             MatButtonModule,

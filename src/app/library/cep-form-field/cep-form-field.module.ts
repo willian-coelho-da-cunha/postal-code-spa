@@ -19,6 +19,9 @@ import { CepFormFieldComponent } from './cep-form-field/cep-form-field.component
     MatInputModule,
     MatFormFieldModule,
     NgxMaskModule.forChild()
+  ],
+  exports: [
+    CepFormFieldComponent
   ]
 })
 export class CepFormFieldModule { }

@@ -1,9 +1,12 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 
 describe('App component ... ', () => {
+
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(
     async(
@@ -20,28 +23,24 @@ describe('App component ... ', () => {
     )
   );
 
-  it('should create the app.',
+  beforeEach(
     () => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.componentInstance;
-      expect(app).toBeTruthy();
-    }
-  );
-
-  it(`should have as title 'trd-front-cep'.`,
-    () => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.componentInstance;
-      expect(app.title).toEqual('trd-front-cep');
-    }
-  );
-
-  it('should render title.',
-    () => {
-      const fixture = TestBed.createComponent(AppComponent);
+      fixture = TestBed.createComponent(AppComponent);
+      component = fixture.componentInstance;
       fixture.detectChanges();
-      const compiled = fixture.nativeElement;
-      expect(compiled.querySelector('.content span').textContent).toContain('trd-front-cep app is running!');
+    }
+  );
+
+  afterEach(
+    () => {
+      fixture.nativeElement.remove();
+      fixture.destroy();
+    }
+  );
+
+  it('should be created.',
+    () => {
+      expect(component).toBeTruthy();
     }
   );
 });

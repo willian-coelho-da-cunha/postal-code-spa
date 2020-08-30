@@ -13,7 +13,7 @@ export class EmailFormFieldComponent implements OnChanges {
 
   @Input() public ipLabel = '';
 
-  @Input() public ipRequired = '';
+  @Input() public ipRequired = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {

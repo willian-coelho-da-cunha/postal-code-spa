@@ -20,6 +20,9 @@ import { PasswordFormFieldComponent } from './password-form-field/password-form-
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule
+  ],
+  exports: [
+    PasswordFormFieldComponent
   ]
 })
 export class PasswordFormFieldModule { }

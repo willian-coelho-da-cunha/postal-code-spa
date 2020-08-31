@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -27,6 +29,8 @@ describe('City list component ... ', () => {
           ],
           imports: [
             CommonModule,
+            RouterTestingModule.withRoutes([]),
+            HttpClientTestingModule,
             BrowserAnimationsModule,
             FlexLayoutModule,
             MatSortModule,

@@ -1,8 +1,18 @@
-# TrdFrontCep
+# TRD Front Cep
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
+## Getting this project
+
+You can download or clone this project to your machine. After this, navigate to the project directory and install all project dependencies running `npm install`.
+
+## JSON Server
+
+Run `npm install -g json-server` to install JSON Server in your machine.
+
 ## Development server
+
+Run `json-server database/database.json` to get a fake API.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

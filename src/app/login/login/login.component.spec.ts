@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SubmitButtonModule } from '../../library/submit-button/submit-button.module';
 import { EmailFormFieldModule } from '../../library/email-form-field/email-form-field.module';
@@ -22,6 +25,8 @@ describe('Login component ... ', () => {
           ],
           imports: [
             CommonModule,
+            BrowserAnimationsModule,
+            FlexLayoutModule,
             SubmitButtonModule,
             EmailFormFieldModule,
             PasswordFormFieldModule

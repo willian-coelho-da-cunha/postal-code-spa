@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { PasswordFormFieldComponent } from './password-form-field/password-form-field.component';
 
 @NgModule({
@@ -19,7 +21,8 @@ import { PasswordFormFieldComponent } from './password-form-field/password-form-
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FlexLayoutModule
   ],
   exports: [
     PasswordFormFieldComponent

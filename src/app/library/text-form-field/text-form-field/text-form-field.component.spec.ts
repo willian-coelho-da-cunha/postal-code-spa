@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { TextFormFieldComponent } from './text-form-field.component';
 
 describe('Text form field component ... ', () => {
@@ -26,7 +28,8 @@ describe('Text form field component ... ', () => {
             ReactiveFormsModule,
             BrowserAnimationsModule,
             MatInputModule,
-            MatFormFieldModule
+            MatFormFieldModule,
+            FlexLayoutModule
           ]
         })
         .compileComponents();

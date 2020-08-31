@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { TextFormFieldComponent } from './text-form-field/text-form-field.component';
 
 @NgModule({
@@ -15,7 +17,8 @@ import { TextFormFieldComponent } from './text-form-field/text-form-field.compon
     CommonModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FlexLayoutModule
   ],
   exports: [
     TextFormFieldComponent

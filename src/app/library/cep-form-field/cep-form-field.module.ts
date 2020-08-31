@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxMaskModule } from 'ngx-mask';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CepFormFieldComponent } from './cep-form-field/cep-form-field.component';
 
@@ -18,7 +19,8 @@ import { CepFormFieldComponent } from './cep-form-field/cep-form-field.component
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    FlexLayoutModule
   ],
   exports: [
     CepFormFieldComponent

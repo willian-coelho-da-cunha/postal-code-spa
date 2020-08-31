@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -24,6 +26,7 @@ describe('City list component ... ', () => {
           imports: [
             CommonModule,
             BrowserAnimationsModule,
+            FlexLayoutModule,
             MatSortModule,
             MatTableModule,
             MatPaginatorModule

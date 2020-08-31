@@ -1,5 +1,5 @@
-<main>
-  <section>
+<main class="city-form">
+  <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="86%" fxFlex.md="76%" fxFlex.lg="66%" fxFlex.xl="56%">
     <app-cep-form-field
       [ipLabel]="'Zip code'"
       [ipRequired]="true">
@@ -9,19 +9,21 @@
       [ipLabel]="'Name'"
       [ipRequired]="true">
     </app-text-form-field>
-  </section>
 
-  <section>
-    <app-cancel-button
-      [ipLabel]="'Cancel'"
-      [ipDisabled]="false"
-      (opClick)="cancel()">
-    </app-cancel-button>
+    <section fxLayout="column" fxLayoutAlign="center stretch">
+      <app-submit-button
+        class="city-form__submit-button"
+        [ipLabel]="'Save'"
+        [ipDisabled]="false"
+        (opClick)="save()">
+      </app-submit-button>
 
-    <app-submit-button
-      [ipLabel]="'Save'"
-      [ipDisabled]="false"
-      (opClick)="save()">
-    </app-submit-button>
+      <app-cancel-button
+        class="city-form__cancel-button"
+        [ipLabel]="'Cancel'"
+        [ipDisabled]="false"
+        (opClick)="cancel()">
+      </app-cancel-button>
+    </section>
   </section>
 </main>

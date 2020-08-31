@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxMaskModule } from 'ngx-mask';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CepFormFieldComponent } from './cep-form-field.component';
 
@@ -29,7 +30,8 @@ describe('Cep form field component ... ', () => {
             BrowserAnimationsModule,
             MatInputModule,
             MatFormFieldModule,
-            NgxMaskModule.forRoot()
+            NgxMaskModule.forRoot(),
+            FlexLayoutModule
           ]
         })
         .compileComponents();

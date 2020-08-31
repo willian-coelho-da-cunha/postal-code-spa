@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { CancelButtonComponent } from './cancel-button.component';
 
 describe('Cancel button component ... ', () => {
@@ -20,7 +22,8 @@ describe('Cancel button component ... ', () => {
           ],
           imports: [
             CommonModule,
-            MatButtonModule
+            MatButtonModule,
+            FlexLayoutModule
           ]
         })
         .compileComponents();

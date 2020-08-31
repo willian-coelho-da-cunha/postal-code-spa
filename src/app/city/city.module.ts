@@ -7,6 +7,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { CancelButtonModule } from '../library/cancel-button/cancel-button.module';
 import { SubmitButtonModule } from '../library/submit-button/submit-button.module';
 import { CepFormFieldModule } from '../library/cep-form-field/cep-form-field.module';
@@ -22,10 +24,11 @@ import { CityListComponent } from './city-list/city-list.component';
   ],
   imports: [
     CommonModule,
+    CityRoutingModule,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
-    CityRoutingModule,
+    FlexLayoutModule,
     CancelButtonModule,
     SubmitButtonModule,
     CepFormFieldModule,

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgxMaskModule } from 'ngx-mask';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CancelButtonModule } from '../../library/cancel-button/cancel-button.module';
 import { SubmitButtonModule } from '../../library/submit-button/submit-button.module';
@@ -23,6 +27,9 @@ describe('City form component ... ', () => {
           ],
           imports: [
             CommonModule,
+            BrowserAnimationsModule,
+            NgxMaskModule.forRoot(),
+            FlexLayoutModule,
             CancelButtonModule,
             SubmitButtonModule,
             CepFormFieldModule,

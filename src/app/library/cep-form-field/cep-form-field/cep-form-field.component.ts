@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 export function cepValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -18,25 +19,35 @@ export function cepValidator(): ValidatorFn {
 })
 export class CepFormFieldComponent implements OnChanges {
 
-  public cepFormField = new FormControl('', [ cepValidator ]);
+  public cepFormField = new FormControl('', [ cepValidator() ]);
 
   @Input() public ipLabel = '';
 
   @Input() public ipRequired = false;
 
+  @Input() public ipReadonly = false;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {
       if (changes['ipRequired'].currentValue === true) {
-        this.cepFormField.setValidators([ cepValidator, Validators.required ]);
+        this.cepFormField.setValidators([ cepValidator(), Validators.required ]);
       } else {
-        this.cepFormField.setValidators([ cepValidator ]);
+        this.cepFormField.setValidators([ cepValidator() ]);
       }
       this.cepFormField.updateValueAndValidity();
     }
   }
 
+  public setValue(value: number): void {
+    this.cepFormField.setValue(value);
+  }
+
   public getValue(): number {
     return this.cepFormField.value;
+  }
+
+  public getStatusChanges(): Observable<any> {
+    return this.cepFormField.statusChanges;
   }
 
   public isValid(): boolean {

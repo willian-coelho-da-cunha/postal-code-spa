@@ -5,6 +5,7 @@
     matInput
     [type]="'text'"
     [required]="ipRequired"
+    [readonly]="ipReadonly"
     [formControl]="textFormField" />
 
   <mat-error *ngIf="textFormField?.invalid">

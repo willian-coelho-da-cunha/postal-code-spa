@@ -29,6 +29,10 @@ export class EmailFormFieldComponent implements OnChanges {
     }
   }
 
+  public setValue(value: string): void {
+    this.emailFormField.setValue(value);
+  }
+
   public getValue(): string {
     return this.emailFormField.value;
   }

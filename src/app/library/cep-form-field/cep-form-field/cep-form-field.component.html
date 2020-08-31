@@ -4,8 +4,9 @@
   <input
     matInput
     [type]="'text'"
-    [mask]="'00000-000'"
+    [mask]="'000.000'"
     [required]="ipRequired"
+    [readonly]="ipReadonly"
     [formControl]="cepFormField" />
 
   <mat-error *ngIf="cepFormField?.invalid">

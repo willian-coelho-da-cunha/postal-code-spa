@@ -31,6 +31,10 @@ export class PasswordFormFieldComponent implements OnChanges {
     }
   }
 
+  public setValue(value: string): void {
+    this.passwordFormField.setValue(value);
+  }
+
   public getValue(): string {
     return this.passwordFormField.value;
   }

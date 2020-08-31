@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { CityRoutingModule } from './city-routing.module';
 
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,7 +28,9 @@ import { CityListComponent } from './city-list/city-list.component';
     CommonModule,
     CityRoutingModule,
     MatSortModule,
+    MatIconModule,
     MatTableModule,
+    MatButtonModule,
     MatPaginatorModule,
     FlexLayoutModule,
     CancelButtonModule,

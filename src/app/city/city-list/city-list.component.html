@@ -1,13 +1,36 @@
 <main class="city-list">
   <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="86%" fxFlex.md="76%" fxFlex.lg="66%" fxFlex.xl="56%">
+    <section class="city-list__actions">
+      <button
+        mat-raised-button
+        class="city-list__actions__logout"
+        [type]="'button'"
+        [color]="'accent'"
+        (click)="clickLogOut()">
+        <mat-icon>exit_to_app</mat-icon>
+        Log Out
+      </button>
+
+      <button
+        mat-raised-button
+        class="city-list__actions__add"
+        [type]="'button'"
+        [color]="'primary'"
+        (click)="clickAddCity()">
+        <mat-icon>add_box</mat-icon>
+        Add
+      </button>
+    </section>
+
     <table
       mat-table
       matSort
       class="mat-elevation-z8"
-      [dataSource]="dataSource">
-      <ng-container matColumnDef="cep">
+      [dataSource]="dataSource"
+      (matSortChange)="matSortChange($event)">
+      <ng-container matColumnDef="zipCode">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Zip code </th>
-        <td mat-cell *matCellDef="let element"> {{ element?.cep }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element?.zipCode }} </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
@@ -15,13 +38,37 @@
         <td mat-cell *matCellDef="let element"> {{ element?.name }} </td>
       </ng-container>
 
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="cell-actions">
+            <button
+              mat-icon-button
+              [type]="'button'"
+              [color]="'primary'"
+              (click)="clickEditCity(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              [type]="'button'"
+              [color]="'warn'"
+              (click)="clickDeleteCity(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </p>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
     <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      [showFirstLastButtons]="true">
+      [pageSizeOptions]="[10, 20, 30]"
+      [showFirstLastButtons]="false"
+      (page)="pageEvent($event)">
     </mat-paginator>
   </section>
 </main>

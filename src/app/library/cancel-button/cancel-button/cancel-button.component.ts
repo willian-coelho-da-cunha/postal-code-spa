@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+import { ThemePalette } from '@angular/material/core';
+
 @Component({
   selector: 'app-cancel-button',
   templateUrl: './cancel-button.component.html',
@@ -9,6 +11,8 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 export class CancelButtonComponent {
 
   @Input() public ipLabel = '';
+
+  @Input() public ipColor: ThemePalette = 'warn';
 
   @Input() public ipDisabled = false;
 

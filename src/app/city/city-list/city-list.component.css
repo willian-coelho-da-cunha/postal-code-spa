@@ -8,3 +8,32 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.city-list__actions {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  padding: 4px 0px;
+}
+
+th.mat-column-actions {
+  text-align: center;
+}
+
+.cell-actions {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.city-list__actions__logout {
+  box-sizing: border-box;
+  margin: 0px 4px 4px 0px;
+}
+.city-list__actions__add {
+  box-sizing: border-box;
+  margin: 0px 4px 4px 0px;
+}

@@ -2,27 +2,37 @@
   <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="86%" fxFlex.md="76%" fxFlex.lg="66%" fxFlex.xl="56%">
     <app-cep-form-field
       [ipLabel]="'Zip code'"
-      [ipRequired]="true">
+      [ipRequired]="true"
+      [ipReadonly]="saveInProgress">
     </app-cep-form-field>
 
     <app-text-form-field
       [ipLabel]="'Name'"
-      [ipRequired]="true">
+      [ipRequired]="true"
+      [ipReadonly]="saveInProgress">
     </app-text-form-field>
 
     <section fxLayout="column" fxLayoutAlign="center stretch">
       <app-submit-button
         class="city-form__submit-button"
         [ipLabel]="'Save'"
-        [ipDisabled]="false"
-        (opClick)="save()">
+        [ipDisabled]="submitButtonDisabled || saveInProgress"
+        (opClick)="clickSave()">
       </app-submit-button>
 
       <app-cancel-button
         class="city-form__cancel-button"
         [ipLabel]="'Cancel'"
-        [ipDisabled]="false"
-        (opClick)="cancel()">
+        [ipDisabled]="saveInProgress"
+        (opClick)="clickCancel()">
+      </app-cancel-button>
+
+      <app-cancel-button
+        class="city-form__logout-button"
+        [ipLabel]="'Log Out'"
+        [ipColor]="'accent'"
+        [ipDisabled]="saveInProgress"
+        (opClick)="clickLogOut()">
       </app-cancel-button>
     </section>
   </section>

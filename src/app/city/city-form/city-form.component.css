@@ -9,6 +9,7 @@
   justify-content: center;
 }
 
+.city-form__logout-button,
 .city-form__cancel-button,
 .city-form__submit-button {
   box-sizing: border-box;

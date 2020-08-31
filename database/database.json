@@ -4,8 +4,14 @@
       "id": "1",
       "username": "trd@gmail.com",
       "password": "person123",
-      "login": true
+      "login": false
     }
   ],
-  "cities": []
+  "cities": [
+    {
+      "name": "New Jersey",
+      "zipCode": "123456",
+      "id": 3
+    }
+  ]
 }

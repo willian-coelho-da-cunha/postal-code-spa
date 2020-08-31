@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-text-form-field',
@@ -15,6 +16,8 @@ export class TextFormFieldComponent implements OnChanges {
 
   @Input() public ipRequired = false;
 
+  @Input() public ipReadonly = false;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {
       if (changes['ipRequired'].currentValue === true) {
@@ -26,8 +29,16 @@ export class TextFormFieldComponent implements OnChanges {
     }
   }
 
+  public setValue(value: string): void {
+    this.textFormField.setValue(value);
+  }
+
   public getValue(): string {
     return this.textFormField.value;
+  }
+
+  public getStatusChanges(): Observable<any> {
+    return this.textFormField.statusChanges;
   }
 
   public isValid(): boolean {

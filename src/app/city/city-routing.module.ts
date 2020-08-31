@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuardService } from '../login/guard/auth-guard.service';
+
 import { CityFormComponent } from './city-form/city-form.component';
 import { CityListComponent } from './city-list/city-list.component';
 
 const cityRoutes: Routes = [
   {
     path: '',
-    component: CityListComponent
+    component: CityListComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'add',
-    component: CityFormComponent
+    component: CityFormComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'list',
-    component: CityListComponent
+    component: CityListComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'edit/:id',
-    component: CityFormComponent
+    component: CityFormComponent,
+    canActivate: [ AuthGuardService ]
   }
 ];
 

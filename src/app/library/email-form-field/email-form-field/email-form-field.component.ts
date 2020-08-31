@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-email-form-field',
@@ -15,6 +16,8 @@ export class EmailFormFieldComponent implements OnChanges {
 
   @Input() public ipRequired = false;
 
+  @Input() public ipReadonly = false;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {
       if (changes['ipRequired'].currentValue === true) {
@@ -28,6 +31,10 @@ export class EmailFormFieldComponent implements OnChanges {
 
   public getValue(): string {
     return this.emailFormField.value;
+  }
+
+  public getStatusChanges(): Observable<any> {
+    return this.emailFormField.statusChanges;
   }
 
   public isValid(): boolean {

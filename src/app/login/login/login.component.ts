@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { combineLatest, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../login.service';
+
+import { EmailFormFieldComponent } from '../../library/email-form-field/email-form-field/email-form-field.component';
+import { PasswordFormFieldComponent } from '../../library/password-form-field/password-form-field/password-form-field.component';
 
 @Component({
   selector: 'app-login',
@@ -6,7 +14,54 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./login.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit, OnDestroy {
 
-  public login(): void {}
+  private end = new Subject<boolean>();
+
+  public loginInProgress = false;
+
+  public submitButtonDisabled = true;
+
+  @ViewChild(EmailFormFieldComponent) private emailFormField: EmailFormFieldComponent;
+
+  @ViewChild(PasswordFormFieldComponent) private passwordFormField: PasswordFormFieldComponent;
+
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+  ) { }
+
+  ngAfterViewInit(): void {
+    combineLatest([
+      this.emailFormField.getStatusChanges(),
+      this.passwordFormField.getStatusChanges()])
+    .pipe(takeUntil(this.end))
+    .subscribe(
+      response => {
+        this.submitButtonDisabled = response[0] !== 'VALID' || response[1] !== 'VALID';
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.end.next();
+    this.end.complete();
+  }
+
+  public login(): void {
+    this.loginInProgress = true;
+    this.loginService
+      .login(this.emailFormField.getValue(), this.passwordFormField.getValue())
+      .pipe(takeUntil(this.end))
+      .subscribe(
+        () => {
+          this.loginInProgress = false;
+          this.router.navigate(['/city/list']);
+        },
+        () => {
+          this.loginInProgress = false;
+        }
+      )
+    ;
+  }
 }

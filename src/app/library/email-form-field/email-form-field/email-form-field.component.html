@@ -5,6 +5,7 @@
     matInput
     [type]="'email'"
     [required]="ipRequired"
+    [readonly]="ipReadonly"
     [formControl]="emailFormField" />
 
   <mat-error *ngIf="emailFormField?.invalid">

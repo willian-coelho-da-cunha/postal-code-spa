@@ -1,3 +1,11 @@
 {
-
+  "users": [
+    {
+      "id": "1",
+      "username": "trd@gmail.com",
+      "password": "person123",
+      "login": true
+    }
+  ],
+  "cities": []
 }

@@ -2,18 +2,20 @@
   <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="76%" fxFlex.md="56%" fxFlex.lg="36%" fxFlex.xl="16%">
     <app-email-form-field
       [ipLabel]="'Your e-mail address'"
-      [ipRequired]="true">
+      [ipRequired]="true"
+      [ipReadonly]="loginInProgress">
     </app-email-form-field>
 
     <app-password-form-field
       [ipLabel]="'Your password'"
-      [ipRequired]="true">
+      [ipRequired]="true"
+      [ipReadonly]="loginInProgress">
     </app-password-form-field>
 
     <section>
       <app-submit-button
         [ipLabel]="'Log In'"
-        [ipDisabled]="false"
+        [ipDisabled]="submitButtonDisabled || loginInProgress"
         (opClick)="login()">
       </app-submit-button>
     </section>

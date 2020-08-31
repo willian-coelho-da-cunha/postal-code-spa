@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-password-form-field',
@@ -17,6 +18,8 @@ export class PasswordFormFieldComponent implements OnChanges {
 
   @Input() public ipRequired = false;
 
+  @Input() public ipReadonly = false;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {
       if (changes['ipRequired'].currentValue === true) {
@@ -32,7 +35,17 @@ export class PasswordFormFieldComponent implements OnChanges {
     return this.passwordFormField.value;
   }
 
+  public getStatusChanges(): Observable<any> {
+    return this.passwordFormField.statusChanges;
+  }
+
   public isValid(): boolean {
     return this.passwordFormField.valid;
+  }
+
+  public changePasswordVisibility(): void {
+    if (this.ipReadonly === false) {
+      this.passwordHidden = !this.passwordHidden;
+    }
   }
 }

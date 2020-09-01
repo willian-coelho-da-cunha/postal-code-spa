@@ -1,42 +1,119 @@
 # TRD Front Cep
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.8. Algumas das tecnologias utilizadas na implementação do projeto foram:
 
-## Getting this project
+- Angular 10.0.8
+- Angular Material 10.1.2
+- Angular Flex Layout 10.0.0-beta.32
+- JSON Server 0.16.1
+- NGX Mask 10.0.1
+- TypeScript 3.9.5
+- HTML5
+- CSS3
+- Karma 5.0.0 (Testes de unidade)
 
-You can download or clone this project to your machine. After this, navigate to the project directory and install all project dependencies running `npm install`.
+Inicialmente, este projeto foi desenvolvido com a simulação de uma API, utilizando para isso o JSON Server 0.16.1. O objetivo foi ganhar produtividade no desenvolvimento do Front-End ao mesmo tempo em que haveria uma estrutura relativamente fácil para se adaptar a uma integração com o Back-End propriamente dito. O repositório contendo o Back-End que atenderá esse projeto é o **TRD Back Cep**, que se encontra em meu perfil no GitHub.
 
-## JSON Server
+## Executar o projeto localmente
 
-Run `npm install -g json-server` to install JSON Server in your machine.
+**Atenção**: Para executar este projeto localmente hoje, não é necessário manipular o repositório que contém o Back-End do mesmo. No entanto, pretende-se mudar este cenário em breve.
 
-## Development server
+Para executar este projeto localmente, você precisará:
 
-Run `json-server database/database.json` to get a fake API.
+- Fazer o download do projeto ou cloná-lo para a sua máquina utilizando uma ferramenta de controle de versão.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Instalar todas as dependências do projeto:
 
-## Login info
+```
+npm install
+```
 
-Username: trd@gmail.com
-Password: person123
+- Instalar de forma global o JSON Server:
 
-## Code scaffolding
+```
+npm install -g json-server
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Utilizando o JSON Server, simular a API:
 
-## Build
+```
+json-server database/database.json
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Iniciar o servidor de desenvolvimento do Angular:
 
-## Running unit tests
+```
+ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- No browser, acessar o endereço `http://localhost:4200/`.
 
-## Running end-to-end tests
+- Utilizar as informações de login:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Username: trd@gmail.com
 
-## Further help
+- Password: person123
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Executar testes de unidade
+
+[Karma](https://karma-runner.github.io).
+
+Caso você não tenha seguido os passos descritos acima ainda, será necessário:
+
+- Fazer o download do projeto ou cloná-lo para a sua máquina utilizando uma ferramenta de controle de versão.
+
+- Instalar todas as dependências do projeto:
+
+```
+npm install
+```
+
+Posteriormente, basta executar o comando abaixo:
+
+```
+ng test
+```
+
+## Executar testes end-to-end
+
+[Protractor](http://www.protractortest.org/).
+
+Caso você não tenha seguido os passos descritos acima ainda, será necessário:
+
+- Fazer o download do projeto ou cloná-lo para a sua máquina utilizando uma ferramenta de controle de versão.
+
+- Instalar todas as dependências do projeto:
+
+```
+npm install
+```
+
+Posteriormente, basta executar o comando abaixo:
+
+```
+ng e2e
+```
+
+## Fazer o build do projeto
+
+Caso você não tenha seguido os passos descritos acima ainda, será necessário:
+
+- Fazer o download do projeto ou cloná-lo para a sua máquina utilizando uma ferramenta de controle de versão.
+
+- Instalar todas as dependências do projeto:
+
+```
+npm install
+```
+
+Posteriormente, basta executar o comando abaixo:
+
+```
+ng build
+```
+
+Ou, basta executar o comando abaixo para obter o build para produção:
+
+```
+ng build --prod
+```

@@ -46,8 +46,6 @@ describe('Cancel button component ... ', () => {
       const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
       const component = fixture.componentInstance;
       expect(component).toBeTruthy();
-      fixture.nativeElement.remove();
-      fixture.destroy();
     }
   );
 

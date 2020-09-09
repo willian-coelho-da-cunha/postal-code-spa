@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**@description Routes.*/
 import { LoginRoutingModule } from './login-routing.module';
 
+/**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SubmitButtonModule } from '../library/submit-button/submit-button.module';
+/**@description Library.*/
+import { ButtonModule } from '../library/button/button.module';
 import { EmailFormFieldModule } from '../library/email-form-field/email-form-field.module';
 import { PasswordFormFieldModule } from '../library/password-form-field/password-form-field.module';
 
+/**@description Components.*/
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
@@ -19,7 +23,7 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     LoginRoutingModule,
     FlexLayoutModule,
-    SubmitButtonModule,
+    ButtonModule,
     EmailFormFieldModule,
     PasswordFormFieldModule
   ]

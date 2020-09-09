@@ -9,9 +9,7 @@
   justify-content: center;
 }
 
-.city-form__logout-button,
-.city-form__cancel-button,
-.city-form__submit-button {
+.city-form__button {
   box-sizing: border-box;
   margin: 0px;
   border: none;

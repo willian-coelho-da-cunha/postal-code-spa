@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
-import { HarnessLoader } from '@angular/cdk/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 import { CommonModule } from '@angular/common';
+
+/**@description Angular material testing.*/
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 /**@description Angular material.*/
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +15,7 @@ import { MatButtonHarness } from '@angular/material/button/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Components.*/
-import { CancelButtonComponent } from './cancel-button.component';
+import { ButtonComponent } from './button.component';
 
 describe('Cancel button component ... ', () => {
 
@@ -28,7 +30,7 @@ describe('Cancel button component ... ', () => {
       () => {
         TestBed.configureTestingModule({
           declarations: [
-            CancelButtonComponent
+            ButtonComponent
           ],
           imports: [
             CommonModule,
@@ -43,7 +45,7 @@ describe('Cancel button component ... ', () => {
 
   it('should be created.',
     () => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       const component = fixture.componentInstance;
       expect(component).toBeTruthy();
     }
@@ -51,7 +53,7 @@ describe('Cancel button component ... ', () => {
 
   it('should has label "Salvar".',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
@@ -69,7 +71,7 @@ describe('Cancel button component ... ', () => {
 
   it('should be disabled.',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
@@ -87,7 +89,7 @@ describe('Cancel button component ... ', () => {
 
   it('should has warn background-color.',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
@@ -105,7 +107,7 @@ describe('Cancel button component ... ', () => {
 
   it('should has accent background-color.',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
@@ -123,7 +125,7 @@ describe('Cancel button component ... ', () => {
 
   it('should has primary background-color.',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
@@ -141,7 +143,7 @@ describe('Cancel button component ... ', () => {
 
   it('should emit an event when clicked on it.',
     async (done: DoneFn) => {
-      const fixture: ComponentFixture<CancelButtonComponent> = TestBed.createComponent(CancelButtonComponent);
+      const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 

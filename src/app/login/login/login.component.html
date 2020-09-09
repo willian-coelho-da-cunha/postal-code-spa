@@ -13,11 +13,12 @@
     </app-password-form-field>
 
     <section>
-      <app-submit-button
+      <app-button
         [ipLabel]="'Log In'"
+        [ipColor]="'primary'"
         [ipDisabled]="submitButtonDisabled || loginInProgress"
         (opClick)="login()">
-      </app-submit-button>
+      </app-button>
     </section>
   </section>
 </main>

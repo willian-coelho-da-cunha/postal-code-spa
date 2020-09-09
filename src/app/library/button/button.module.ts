@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**@description Angular material.*/
 import { MatButtonModule } from '@angular/material/button';
 
+/**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SubmitButtonComponent } from './submit-button/submit-button.component';
+/**@description Components.*/
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
-    SubmitButtonComponent
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,7 @@ import { SubmitButtonComponent } from './submit-button/submit-button.component';
     FlexLayoutModule
   ],
   exports: [
-    SubmitButtonComponent
+    ButtonComponent
   ]
 })
-export class SubmitButtonModule { }
+export class ButtonModule { }

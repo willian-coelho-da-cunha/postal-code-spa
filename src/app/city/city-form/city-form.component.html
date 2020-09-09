@@ -13,27 +13,29 @@
     </app-text-form-field>
 
     <section fxLayout="column" fxLayoutAlign="center stretch">
-      <app-submit-button
-        class="city-form__submit-button"
+      <app-button
+        class="city-form__button"
         [ipLabel]="'Save'"
+        [ipColor]="'primary'"
         [ipDisabled]="submitButtonDisabled || saveInProgress"
         (opClick)="clickSave()">
-      </app-submit-button>
+      </app-button>
 
-      <app-cancel-button
-        class="city-form__cancel-button"
+      <app-button
+        class="city-form__button"
         [ipLabel]="'Cancel'"
+        [ipColor]="'warn'"
         [ipDisabled]="saveInProgress"
         (opClick)="clickCancel()">
-      </app-cancel-button>
+      </app-button>
 
-      <app-cancel-button
-        class="city-form__logout-button"
+      <app-button
+        class="city-form__button"
         [ipLabel]="'Log Out'"
         [ipColor]="'accent'"
         [ipDisabled]="saveInProgress"
         (opClick)="clickLogOut()">
-      </app-cancel-button>
+      </app-button>
     </section>
   </section>
 </main>

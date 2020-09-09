@@ -213,4 +213,86 @@ describe('Cep form field component ... ', () => {
       });
     }
   );
+
+  it('should show "Field value must fill the mask!" when form field is not filled entirely.',
+    async (done: DoneFn) => {
+      const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
+      let host: TestElement | undefined;
+      let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
+      let textErrors: Array<string>;
+      let cepFormField: MatFormFieldHarness;
+
+      fixture.componentInstance.ipRequired = true;
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      loader = TestbedHarnessEnvironment.loader(fixture);
+      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      control = await cepFormField.getControl();
+      host = await control?.host();
+
+      await host?.sendKeys('012');
+      await host?.blur();
+      textErrors = await cepFormField.getTextErrors();
+      expect(textErrors.length).toBeGreaterThan(0);
+      expect(textErrors.shift()).toEqual('Field value must fill the mask!');
+      expect(textErrors.length).toEqual(0);
+      done();
+    }
+  );
+
+  it('should show "You must enter a valid cep! (100.000 / 999.999)!" when form field is filled with any repeated alternated number.',
+    async (done: DoneFn) => {
+      const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
+      let host: TestElement | undefined;
+      let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
+      let textErrors: Array<string>;
+      let cepFormField: MatFormFieldHarness;
+
+      fixture.componentInstance.ipRequired = true;
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      loader = TestbedHarnessEnvironment.loader(fixture);
+      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      control = await cepFormField.getControl();
+      host = await control?.host();
+
+      await host?.sendKeys('552523');
+      await host?.blur();
+      textErrors = await cepFormField.getTextErrors();
+      expect(textErrors.length).toBeGreaterThan(0);
+      expect(textErrors.shift()).toEqual('You must enter a valid cep! (100.000 / 999.999)!');
+      expect(textErrors.length).toEqual(0);
+      done();
+    }
+  );
+
+  it('should show no errors when form field is filled with a valid number.',
+    async (done: DoneFn) => {
+      const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
+      let host: TestElement | undefined;
+      let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
+      let textErrors: Array<string>;
+      let cepFormField: MatFormFieldHarness;
+
+      fixture.componentInstance.ipRequired = true;
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      loader = TestbedHarnessEnvironment.loader(fixture);
+      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      control = await cepFormField.getControl();
+      host = await control?.host();
+
+      await host?.sendKeys('523563');
+      await host?.blur();
+      textErrors = await cepFormField.getTextErrors();
+      expect(textErrors.length).toBe(0);
+      done();
+    }
+  );
 });

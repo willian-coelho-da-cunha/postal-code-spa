@@ -5,12 +5,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+/**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SubmitButtonModule } from '../../library/submit-button/submit-button.module';
+/**@description Library.*/
+import { ButtonModule } from '../../library/button/button.module';
 import { EmailFormFieldModule } from '../../library/email-form-field/email-form-field.module';
 import { PasswordFormFieldModule } from '../../library/password-form-field/password-form-field.module';
 
+/**@description Components.*/
 import { LoginComponent } from './login.component';
 
 describe('Login component ... ', () => {
@@ -31,7 +34,7 @@ describe('Login component ... ', () => {
             HttpClientTestingModule,
             BrowserAnimationsModule,
             FlexLayoutModule,
-            SubmitButtonModule,
+            ButtonModule,
             EmailFormFieldModule,
             PasswordFormFieldModule
           ]

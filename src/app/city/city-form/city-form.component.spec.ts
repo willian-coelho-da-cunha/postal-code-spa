@@ -5,14 +5,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+/**@description Resources.*/
 import { NgxMaskModule } from 'ngx-mask';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { CancelButtonModule } from '../../library/cancel-button/cancel-button.module';
-import { SubmitButtonModule } from '../../library/submit-button/submit-button.module';
+/**@description Library.*/
+import { ButtonModule } from '../../library/button/button.module';
 import { CepFormFieldModule } from '../../library/cep-form-field/cep-form-field.module';
 import { TextFormFieldModule } from '../../library/text-form-field/text-form-field.module';
 
+/**@description Components.*/
 import { CityFormComponent } from './city-form.component';
 
 describe('City form component ... ', () => {
@@ -34,8 +36,7 @@ describe('City form component ... ', () => {
             BrowserAnimationsModule,
             NgxMaskModule.forRoot(),
             FlexLayoutModule,
-            CancelButtonModule,
-            SubmitButtonModule,
+            ButtonModule,
             CepFormFieldModule,
             TextFormFieldModule
           ]

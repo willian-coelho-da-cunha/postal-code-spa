@@ -1,5 +1,5 @@
-<main class="login">
-  <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="76%" fxFlex.md="56%" fxFlex.lg="36%" fxFlex.xl="16%">
+<app-main [ipAlignHorizontal]="'center'">
+  <app-section [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-email-form-field
       [ipLabel]="'Your e-mail address'"
       [ipRequired]="true"
@@ -11,14 +11,14 @@
       [ipRequired]="true"
       [ipReadonly]="loginInProgress">
     </app-password-form-field>
+  </app-section>
 
-    <section>
-      <app-button
-        [ipLabel]="'Log In'"
-        [ipColor]="'primary'"
-        [ipDisabled]="submitButtonDisabled || loginInProgress"
-        (opClick)="login()">
-      </app-button>
-    </section>
-  </section>
-</main>
+  <app-section [ipLayout]="'column'" [ipAlignVertical]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
+    <app-button
+      [ipLabel]="'Log In'"
+      [ipColor]="'primary'"
+      [ipDisabled]="submitButtonDisabled || loginInProgress"
+      (opClick)="login()">
+    </app-button>
+  </app-section>
+</app-main>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, HostBinding, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 /**@description Angular material.*/
 import { ThemePalette } from '@angular/material/core';
@@ -18,4 +18,6 @@ export class ButtonComponent {
   @Input() public ipDisabled = false;
 
   @Output() public opClick = new EventEmitter<never>();
+
+  @HostBinding() public style = 'width: 100%; min-width: 100%; place-content: center;';
 }

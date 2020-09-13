@@ -3,11 +3,14 @@ import { Subject, combineLatest } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
+/**@description Models.*/
 import { City } from '../model/city.model';
 
+/**@description Services.*/
 import { CityService } from '../city.service';
 import { LoginService } from '../../login/login.service';
 
+/**@description Library.*/
 import { CepFormFieldComponent } from '../../library/cep-form-field/cep-form-field/cep-form-field.component';
 import { TextFormFieldComponent } from '../../library/text-form-field/text-form-field/text-form-field.component';
 

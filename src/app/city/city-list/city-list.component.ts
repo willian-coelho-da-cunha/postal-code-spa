@@ -3,13 +3,16 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
+/**@description Angular material.*/
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
+/**@description Models.*/
 import { City } from '../model/city.model';
 import { CityList } from '../model/city-list.model';
 
+/**@description Services.*/
 import { CityService } from '../city.service';
 import { LoginService } from '../../login/login.service';
 

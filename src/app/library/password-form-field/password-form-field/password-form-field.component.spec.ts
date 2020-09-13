@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+/**@description Angular material.*/
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+/**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+/**@description Components.*/
 import { PasswordFormFieldComponent } from './password-form-field.component';
 
 describe('Password form field component ... ', () => {

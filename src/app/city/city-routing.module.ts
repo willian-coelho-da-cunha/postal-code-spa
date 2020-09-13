@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+/**@description Services.*/
 import { AuthGuardService } from '../login/guard/auth-guard.service';
 
+/**@description Components.*/
 import { CityFormComponent } from './city-form/city-form.component';
 import { CityListComponent } from './city-list/city-list.component';
 

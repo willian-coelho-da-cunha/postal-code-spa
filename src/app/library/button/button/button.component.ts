@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+/**@description Angular material.*/
 import { ThemePalette } from '@angular/material/core';
 
 @Component({

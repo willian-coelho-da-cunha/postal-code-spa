@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+/**@description Models.*/
 import { City } from './model/city.model';
 import { CityList } from './model/city-list.model';
 

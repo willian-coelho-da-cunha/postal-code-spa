@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+/**@description Services.*/
 import { CityService } from './city.service';
 
 describe('City service ... ', () => {

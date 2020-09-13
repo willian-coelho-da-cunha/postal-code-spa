@@ -5,14 +5,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
+/**@description Angular material.*/
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+/**@description Resources.*/
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+/**@description Components.*/
 import { CityListComponent } from './city-list.component';
 
 describe('City list component ... ', () => {

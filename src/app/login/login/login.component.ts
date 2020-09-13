@@ -3,8 +3,10 @@ import { combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+/**@description Services.*/
 import { LoginService } from '../login.service';
 
+/**@description Library.*/
 import { EmailFormFieldComponent } from '../../library/email-form-field/email-form-field/email-form-field.component';
 import { PasswordFormFieldComponent } from '../../library/password-form-field/password-form-field/password-form-field.component';
 

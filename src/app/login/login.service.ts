@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router, UrlTree } from '@angular/router';
 import { take } from 'rxjs/operators';
 
+/**@description Models.*/
 import { User } from './model/user.model';
 
 @Injectable({
@@ -13,6 +15,7 @@ export class LoginService {
   private readonly endpoint = 'http://localhost:3000/users';
 
   constructor(
+    private router: Router,
     private httpClient: HttpClient
   ) { }
 
@@ -42,7 +45,7 @@ export class LoginService {
     );
   }
 
-  public checkLogin(): Observable<boolean> {
+  public checkLogin(): Observable<boolean | UrlTree> {
     return new Observable(
       resolve => {
         const userEncodedId = sessionStorage.getItem('loggedUser');
@@ -53,15 +56,22 @@ export class LoginService {
             .subscribe(
               response => {
                 if (response) {
-                  resolve.next(response.login);
+                  if (response.login === true) {
+                    resolve.next(true);
+                  } else {
+                    resolve.next(this.router.createUrlTree(['/login']));
+                  }
                 } else {
-                  resolve.next(false);
+                  resolve.next(this.router.createUrlTree(['/login']));
                 }
+              },
+              () => {
+                resolve.next(this.router.createUrlTree(['/login']));
               }
             )
           ;
         } else {
-          resolve.next(false);
+          resolve.next(this.router.createUrlTree(['/login']));
         }
       }
     );

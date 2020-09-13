@@ -1,6 +1,7 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+/**@description Components.*/
 import { AppComponent } from './app.component';
 
 describe('App component ... ', () => {

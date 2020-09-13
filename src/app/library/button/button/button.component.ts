@@ -19,5 +19,5 @@ export class ButtonComponent {
 
   @Output() public opClick = new EventEmitter<never>();
 
-  @HostBinding() public style = 'width: 100%; min-width: 100%; place-content: center;';
+  @HostBinding() public style = 'width: 100%; min-width: 100%;';
 }

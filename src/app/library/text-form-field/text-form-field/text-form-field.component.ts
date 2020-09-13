@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, Input, HostBinding, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms'
 import { Observable } from 'rxjs';
 
@@ -17,6 +17,8 @@ export class TextFormFieldComponent implements OnChanges {
   @Input() public ipRequired = false;
 
   @Input() public ipReadonly = false;
+
+  @HostBinding() public style = 'width: 100%; min-width: 100%;';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {

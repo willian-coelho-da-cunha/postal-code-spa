@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
 import { ButtonModule } from '../library/button/button.module';
+import { ContainerModule } from '../library/container/container.module';
 import { CepFormFieldModule } from '../library/cep-form-field/cep-form-field.module';
 import { TextFormFieldModule } from '../library/text-form-field/text-form-field.module';
 
@@ -38,6 +39,7 @@ import { CityListComponent } from './city-list/city-list.component';
     MatPaginatorModule,
     FlexLayoutModule,
     ButtonModule,
+    ContainerModule,
     CepFormFieldModule,
     TextFormFieldModule
   ]

@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+/**@description Resources.*/
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 /**@description Components.*/
 import { MainComponent } from './main.component';
 
@@ -14,6 +17,9 @@ describe('Main component ... ', () => {
         TestBed.configureTestingModule({
           declarations: [
             MainComponent
+          ],
+          imports: [
+            FlexLayoutModule
           ]
         })
         .compileComponents();

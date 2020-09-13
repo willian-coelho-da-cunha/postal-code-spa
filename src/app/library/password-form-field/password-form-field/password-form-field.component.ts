@@ -20,7 +20,7 @@ export class PasswordFormFieldComponent implements OnChanges {
 
   @Input() public ipReadonly = false;
 
-  @HostBinding() public style = 'width: 100%; min-width: 100%; place-content: center;';
+  @HostBinding() public style = 'width: 100%; min-width: 100%;';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['ipRequired'] && changes['ipRequired'].previousValue !== changes['ipRequired'].currentValue) {

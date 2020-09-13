@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
 import { ButtonModule } from '../../library/button/button.module';
+import { ContainerModule } from '../../library/container/container.module';
 import { EmailFormFieldModule } from '../../library/email-form-field/email-form-field.module';
 import { PasswordFormFieldModule } from '../../library/password-form-field/password-form-field.module';
 
@@ -35,6 +36,7 @@ describe('Login component ... ', () => {
             BrowserAnimationsModule,
             FlexLayoutModule,
             ButtonModule,
+            ContainerModule,
             EmailFormFieldModule,
             PasswordFormFieldModule
           ]

@@ -1,31 +1,30 @@
-<main class="city-list">
-  <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="86%" fxFlex.md="76%" fxFlex.lg="66%" fxFlex.xl="56%">
-    <section class="city-list__actions">
-      <button
-        mat-raised-button
-        class="city-list__actions__logout"
-        [type]="'button'"
-        [color]="'accent'"
-        (click)="clickLogOut()">
-        <mat-icon>exit_to_app</mat-icon>
-        Log Out
-      </button>
+<app-main [ipAlignHorizontal]="'center'">
+  <app-section id="a" [ipLayout]="'row'" [ipAlignVertical]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
+    <button
+      mat-raised-button
+      [type]="'button'"
+      [color]="'accent'"
+      (click)="clickLogOut()">
+      <mat-icon>exit_to_app</mat-icon>
+      Log Out
+    </button>
 
-      <button
-        mat-raised-button
-        class="city-list__actions__add"
-        [type]="'button'"
-        [color]="'primary'"
-        (click)="clickAddCity()">
-        <mat-icon>add_box</mat-icon>
-        Add
-      </button>
-    </section>
+    <button
+      mat-raised-button
+      [type]="'button'"
+      [color]="'primary'"
+      (click)="clickAddCity()">
+      <mat-icon>add_box</mat-icon>
+      Add
+    </button>
+  </app-section>
 
+  <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <table
       mat-table
       matSort
       class="mat-elevation-z8"
+      [style]="'width: 100%; min-width: 100%; place-content: center;'"
       [dataSource]="dataSource"
       (matSortChange)="matSortChange($event)">
       <ng-container matColumnDef="zipCode">
@@ -66,9 +65,11 @@
     </table>
 
     <mat-paginator
+      class="mat-elevation-z8"
+      [style]="'width: 100%; min-width: 100%; place-content: center;'"
       [pageSizeOptions]="[10, 20, 30]"
       [showFirstLastButtons]="false"
       (page)="pageEvent($event)">
     </mat-paginator>
-  </section>
-</main>
+  </app-section>
+</app-main>

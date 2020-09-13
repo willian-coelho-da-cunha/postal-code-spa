@@ -1,5 +1,5 @@
-<main class="city-form">
-  <section fxLayout="column" fxLayoutAlign="center stretch" fxFlex.xs="96%" fxFlex.sm="86%" fxFlex.md="76%" fxFlex.lg="66%" fxFlex.xl="56%">
+<app-main [ipAlignHorizontal]="'center'">
+  <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-cep-form-field
       [ipLabel]="'Zip code'"
       [ipRequired]="true"
@@ -11,31 +11,28 @@
       [ipRequired]="true"
       [ipReadonly]="saveInProgress">
     </app-text-form-field>
+  </app-section>
 
-    <section fxLayout="column" fxLayoutAlign="center stretch">
-      <app-button
-        class="city-form__button"
-        [ipLabel]="'Save'"
-        [ipColor]="'primary'"
-        [ipDisabled]="submitButtonDisabled || saveInProgress"
-        (opClick)="clickSave()">
-      </app-button>
+  <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
+    <app-button
+      [ipLabel]="'Save'"
+      [ipColor]="'primary'"
+      [ipDisabled]="submitButtonDisabled || saveInProgress"
+      (opClick)="clickSave()">
+    </app-button>
 
-      <app-button
-        class="city-form__button"
-        [ipLabel]="'Cancel'"
-        [ipColor]="'warn'"
-        [ipDisabled]="saveInProgress"
-        (opClick)="clickCancel()">
-      </app-button>
+    <app-button
+      [ipLabel]="'Cancel'"
+      [ipColor]="'warn'"
+      [ipDisabled]="saveInProgress"
+      (opClick)="clickCancel()">
+    </app-button>
 
-      <app-button
-        class="city-form__button"
-        [ipLabel]="'Log Out'"
-        [ipColor]="'accent'"
-        [ipDisabled]="saveInProgress"
-        (opClick)="clickLogOut()">
-      </app-button>
-    </section>
-  </section>
-</main>
+    <app-button
+      [ipLabel]="'Log Out'"
+      [ipColor]="'accent'"
+      [ipDisabled]="saveInProgress"
+      (opClick)="clickLogOut()">
+    </app-button>
+  </app-section>
+</app-main>

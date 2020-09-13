@@ -15,6 +15,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 /**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+/**@description Library.*/
+import { ContainerModule } from '../../library/container/container.module';
+
 /**@description Components.*/
 import { CityListComponent } from './city-list.component';
 
@@ -35,12 +38,13 @@ describe('City list component ... ', () => {
             RouterTestingModule.withRoutes([]),
             HttpClientTestingModule,
             BrowserAnimationsModule,
-            FlexLayoutModule,
             MatSortModule,
             MatIconModule,
             MatTableModule,
             MatButtonModule,
-            MatPaginatorModule
+            MatPaginatorModule,
+            FlexLayoutModule,
+            ContainerModule
           ]
         })
         .compileComponents();

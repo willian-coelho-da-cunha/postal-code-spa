@@ -12,6 +12,36 @@
       "name": "New Jersey",
       "zipCode": "123456",
       "id": 3
+    },
+    {
+      "name": "California",
+      "zipCode": "789456",
+      "id": 4
+    },
+    {
+      "name": "Texas",
+      "zipCode": "145698",
+      "id": 5
+    },
+    {
+      "name": "Toronto",
+      "zipCode": "456987",
+      "id": 6
+    },
+    {
+      "name": "Los Angeles",
+      "zipCode": "523698",
+      "id": 7
+    },
+    {
+      "name": "Las Vegas",
+      "zipCode": "326598",
+      "id": 8
+    },
+    {
+      "name": "Oxford",
+      "zipCode": "785421",
+      "id": 9
     }
   ]
 }

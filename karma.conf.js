@@ -33,12 +33,15 @@ module.exports = function (config) {
     ],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
     autoWatch: true,
     browsers: [
-      'Chrome'
+      'ChromeHeadless'
     ],
-    singleRun: false,
-    restartOnFileChange: true
+    singleRun: true,
+    restartOnFileChange: true,
+    browserDisconnectTolerance: 1,
+    concurrency: 1,
+    retryLimit: 0
   });
 };

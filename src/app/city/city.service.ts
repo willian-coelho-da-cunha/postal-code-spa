@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 /**@description Models.*/
 import { City } from './model/city.model';
-import { CityList } from './model/city-list.model';
+import { TableControl } from '../library/table/model/table-control.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,9 @@ export class CityService {
     private httpClient: HttpClient
   ) { }
 
-  public getCities(cityList: CityList): Observable<any> {
+  public getCities(tableControl: TableControl): Observable<any> {
     return this.httpClient.get(
-      `${this.endpoint}?_sort=${cityList.sort.join(',')}&_order=${cityList.order.join(',')}&_page=${cityList.page}&_limit=${cityList.limit}`
+      `${this.endpoint}?_sort=${tableControl.sort.join(',')}&_order=${tableControl.order.join(',')}&_page=${tableControl.page}&_limit=${tableControl.limit}`
     );
   }
 

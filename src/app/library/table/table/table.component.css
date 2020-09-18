@@ -1,0 +1,12 @@
+th.mat-column-actions {
+  text-align: center;
+}
+
+.cell-actions {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+}

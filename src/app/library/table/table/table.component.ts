@@ -6,9 +6,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 /**@description Models.*/
-import { TableColumn, TableColumnFactory } from '../model/table-column.model';
+import { TableColumn } from '../model/table-column.model';
 import { TableControl, TableControlFactory } from '../model/table-control.model';
-import { TableActionColumn, TableActionColumnFactory } from '../model/table-action-column.model';
+import { TableActionColumn } from '../model/table-action-column.model';
 
 @Component({
   selector: 'app-table',
@@ -20,7 +20,7 @@ export class TableComponent<T> implements OnChanges, OnInit {
 
   public dataSource = new MatTableDataSource<T>();
 
-  public tableControl: TableControl;
+  public tableControl = TableControlFactory.getInstance([]);
 
   public columns = new Array<string>();
 
@@ -63,7 +63,7 @@ export class TableComponent<T> implements OnChanges, OnInit {
   }
 
   public setDataSource(dataSource: Array<T>): void {
-    this.dataSource = new MatTableDataSource(dataSource);
+    this.dataSource.data = dataSource;
   }
 
   public setSort(attributes: Array<string>): void {

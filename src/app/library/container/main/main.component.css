@@ -3,4 +3,6 @@ main {
   margin: 0px;
   border: none;
   padding: 4px;
+  height: auto !important;
+  min-height: 100%;
 }

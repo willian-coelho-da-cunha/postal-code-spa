@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 /**@description Routes.*/
 import { LoginRoutingModule } from './login-routing.module';
 
-/**@description Resources.*/
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 /**@description Library.*/
 import { ButtonModule } from '../library/button/button.module';
 import { ContainerModule } from '../library/container/container.module';
@@ -23,7 +20,6 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FlexLayoutModule,
     ButtonModule,
     ContainerModule,
     EmailFormFieldModule,

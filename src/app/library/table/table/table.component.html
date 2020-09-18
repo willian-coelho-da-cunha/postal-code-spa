@@ -1,63 +1,67 @@
-<table
-  mat-table
-  matSort
-  fxFlex="100%"
-  class="mat-elevation-z8"
-  [dataSource]="dataSource"
-  (matSortChange)="matSortChange($event)">
-  <ng-container *ngFor="let column of ipColumns">
-    <ng-container *ngIf="column?.allowSort === false">
-      <ng-container [matColumnDef]="column?.attributeName">
-        <th mat-header-cell *matHeaderCellDef> {{ column?.columnName }} </th>
-        <td mat-cell *matCellDef="let element"> {{ element[column?.attributeName] }} </td>
+<app-section [ipLayout]="'row'">
+  <table
+    mat-table
+    matSort
+    fxFlex="100%"
+    class="mat-elevation-z8"
+    [dataSource]="dataSource"
+    (matSortChange)="matSortChange($event)">
+    <ng-container *ngFor="let column of ipColumns">
+      <ng-container *ngIf="column?.allowSort === false">
+        <ng-container [matColumnDef]="column?.attributeName">
+          <th mat-header-cell *matHeaderCellDef> {{ column?.columnName }} </th>
+          <td mat-cell *matCellDef="let element"> {{ element[column.attributeName] }} </td>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="column?.allowSort === true">
+        <ng-container [matColumnDef]="column?.attributeName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column?.columnName }} </th>
+          <td mat-cell *matCellDef="let element"> {{ element[column.attributeName] }} </td>
+        </ng-container>        
       </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="column?.allowSort === true">
-      <ng-container [matColumnDef]="column?.attributeName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column?.columnName }} </th>
-        <td mat-cell *matCellDef="let element"> {{ element[column?.attributeName] }} </td>
-      </ng-container>        
+    <ng-container *ngFor="let action of ipActions">
+      <ng-container [matColumnDef]="action?.code">
+        <th mat-header-cell *matHeaderCellDef> {{ action?.columnName }} </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="cell-actions">
+            <ng-container *ngIf="action?.showEditButton === true">
+              <button
+                mat-icon-button
+                [type]="'button'"
+                [color]="'primary'"
+                (click)="clickEditEntity(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </ng-container>
+
+            <ng-container *ngIf="action?.showDeleteButton === true">
+              <button
+                mat-icon-button
+                [type]="'button'"
+                [color]="'warn'"
+                (click)="clickDeleteEntity(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ng-container>
+          </p>
+        </td>
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-  <ng-container *ngFor="let action of ipActions">
-    <ng-container [matColumnDef]="action?.code">
-      <th mat-header-cell *matHeaderCellDef> {{ action?.columnName }} </th>
-      <td mat-cell *matCellDef="let element">
-        <p class="cell-actions">
-          <ng-container *ngIf="action?.showEditButton === true">
-            <button
-              mat-icon-button
-              [type]="'button'"
-              [color]="'primary'"
-              (click)="clickEditEntity(element)">
-              <mat-icon>edit</mat-icon>
-            </button>
-          </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</app-section>
 
-          <ng-container *ngIf="action?.showDeleteButton === true">
-            <button
-              mat-icon-button
-              [type]="'button'"
-              [color]="'warn'"
-              (click)="clickDeleteEntity(element)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </ng-container>
-        </p>
-      </td>
-    </ng-container>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-</table>
-
-<mat-paginator
-  class="mat-elevation-z8"
-  fxFlex="100%"
-  [pageSizeOptions]="[10, 20, 30]"
-  [showFirstLastButtons]="false"
-  (page)="pageEvent($event)">
-</mat-paginator>
+<app-section [ipLayout]="'row'">
+  <mat-paginator
+    class="mat-elevation-z8"
+    fxFlex="100%"
+    [pageSizeOptions]="[10, 20, 30]"
+    [showFirstLastButtons]="false"
+    (page)="pageEvent($event)">
+  </mat-paginator>
+</app-section>

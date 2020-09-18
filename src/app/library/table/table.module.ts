@@ -11,6 +11,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 /**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+/**@description Library.*/
+import { ContainerModule } from '../container/container.module';
+
 /**@description Components.*/
 import { TableComponent } from './table/table.component';
 
@@ -25,7 +28,11 @@ import { TableComponent } from './table/table.component';
     MatTableModule,
     MatButtonModule,
     MatPaginatorModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ContainerModule
+  ],
+  exports: [
+    TableComponent
   ]
 })
 export class TableModule { }

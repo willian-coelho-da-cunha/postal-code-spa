@@ -1,66 +1,71 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
-/**@description Angular material.*/
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-
 /**@description Models.*/
 import { City } from '../model/city.model';
-import { CityList } from '../model/city-list.model';
+import { TableColumn, TableColumnFactory } from '../../library/table/model/table-column.model';
+import { TableControl } from '../../library/table/model/table-control.model';
+import { TableActionColumn, TableActionColumnFactory } from '../../library/table/model/table-action-column.model';
 
 /**@description Services.*/
 import { CityService } from '../city.service';
 import { LoginService } from '../../login/login.service';
+
+/**@description Components.*/
+import { TableComponent } from 'src/app/library/table/table/table.component';
 
 @Component({
   selector: 'app-city-list',
   templateUrl: './city-list.component.html',
   styleUrls: ['./city-list.component.css']
 })
-export class CityListComponent implements OnInit {
+export class CityListComponent implements AfterViewInit {
 
   private end = new Subject<boolean>();
 
-  public cityList = new CityList();
+  public sort = new Array<string>();
 
-  public readonly displayedColumns = [ 'zipCode', 'name', 'actions' ];
+  public columns = new Array<TableColumn>();
 
-  public dataSource = new MatTableDataSource();
+  public actions = new Array<TableActionColumn>();
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(TableComponent) private tableComponent: TableComponent<City>;
 
   constructor(
     private router: Router,
     private cityService: CityService,
     private loginService: LoginService
-  ) { }
+    ) {
+    this.sort.push('zipCode');
+    this.sort.push('name');
 
-  ngOnInit(): void {
-    this.getCities();
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.columns.push(TableColumnFactory.getInstance(true, 'Zip Code', 'zipCode'));
+    this.columns.push(TableColumnFactory.getInstance(true, 'City name', 'name'));
+
+    this.actions.push(TableActionColumnFactory.getInstance('actions', 'Actions', true, false, true));
   }
 
-  private getCities(): void {
+  ngAfterViewInit(): void {
+    this.getCities(this.tableComponent.tableControl);
+  }
+
+  private getCities(tableControl: TableControl): void {
     this.cityService
-      .getCities(this.cityList)
+      .getCities(tableControl)
       .pipe(takeUntil(this.end))
       .subscribe(
         response => {
           if (Array.isArray(response)) {
-            this.dataSource.data = [ ...response ];
+            this.tableComponent.setDataSource([...response]);
+
           } else {
-            this.dataSource.data = new Array<City>();
+            this.tableComponent.setDataSource(new Array<City>());
           }
         },
         () => {
-          this.dataSource.data = new Array<City>();
+          this.tableComponent.setDataSource(new Array<City>());
         }
       )
     ;
@@ -79,27 +84,19 @@ export class CityListComponent implements OnInit {
         .pipe(takeUntil(this.end))
         .subscribe(
           () => {
-            this.getCities();
+            this.getCities(this.tableComponent.tableControl);
           }
         )
       ;
     }
   }
 
-  public pageEvent($event: PageEvent): void {
-    if ($event) {
-      this.cityList.page = $event.pageIndex;
-      this.cityList.limit = $event.pageSize;
-      this.getCities();
-    }
+  public pageEvent($event: TableControl): void {
+    this.getCities($event);
   }
 
-  public matSortChange($event: Sort): void {
-    if ($event) {
-      const index = this.cityList.sort.indexOf($event.active);
-      this.cityList.order[index] = <'asc' | 'desc'>$event.direction;
-      this.getCities();
-    }
+  public matSortChange($event: TableControl): void {
+    this.getCities($event);
   }
 
   public clickAddCity(): void {

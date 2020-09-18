@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**@description Resources.*/
 import { NgxMaskModule } from 'ngx-mask';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
 import { ButtonModule } from '../../library/button/button.module';
@@ -36,7 +35,6 @@ describe('City form component ... ', () => {
             HttpClientTestingModule,
             BrowserAnimationsModule,
             NgxMaskModule.forRoot(),
-            FlexLayoutModule,
             ButtonModule,
             ContainerModule,
             CepFormFieldModule,

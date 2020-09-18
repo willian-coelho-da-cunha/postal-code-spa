@@ -1,5 +1,5 @@
 <app-main [ipAlignHorizontal]="'center'">
-  <app-section id="a" [ipLayout]="'row'" [ipAlignVertical]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
+  <app-section [ipLayout]="'row'" [ipAlignVertical]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <button
       mat-raised-button
       [type]="'button'"
@@ -19,57 +19,15 @@
     </button>
   </app-section>
 
-  <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
-    <table
-      mat-table
-      matSort
-      class="mat-elevation-z8"
-      [style]="'width: 100%; min-width: 100%; place-content: center;'"
-      [dataSource]="dataSource"
-      (matSortChange)="matSortChange($event)">
-      <ng-container matColumnDef="zipCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Zip code </th>
-        <td mat-cell *matCellDef="let element"> {{ element?.zipCode }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> City name </th>
-        <td mat-cell *matCellDef="let element"> {{ element?.name }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element">
-          <p class="cell-actions">
-            <button
-              mat-icon-button
-              [type]="'button'"
-              [color]="'primary'"
-              (click)="clickEditCity(element)">
-              <mat-icon>edit</mat-icon>
-            </button>
-
-            <button
-              mat-icon-button
-              [type]="'button'"
-              [color]="'warn'"
-              (click)="clickDeleteCity(element)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </p>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator
-      class="mat-elevation-z8"
-      [style]="'width: 100%; min-width: 100%; place-content: center;'"
-      [pageSizeOptions]="[10, 20, 30]"
-      [showFirstLastButtons]="false"
-      (page)="pageEvent($event)">
-    </mat-paginator>
+  <app-section [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
+    <app-table
+      [ipSort]="sort"
+      [ipColumns]="columns"
+      [ipActions]="actions"
+      (opSort)="matSortChange($event)"
+      (opEdit)="clickEditCity($event)"
+      (opDelete)="clickDeleteCity($event)"
+      (opPaginate)="pageEvent($event)">
+    </app-table>
   </app-section>
 </app-main>

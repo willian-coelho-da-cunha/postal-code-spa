@@ -7,15 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**@description Angular material.*/
 import { MatIconModule } from '@angular/material/icon';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
-/**@description Resources.*/
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
+import { TableModule } from '../../library/table/table.module';
 import { ContainerModule } from '../../library/container/container.module';
 
 /**@description Components.*/
@@ -38,12 +33,9 @@ describe('City list component ... ', () => {
             RouterTestingModule.withRoutes([]),
             HttpClientTestingModule,
             BrowserAnimationsModule,
-            MatSortModule,
             MatIconModule,
-            MatTableModule,
             MatButtonModule,
-            MatPaginatorModule,
-            FlexLayoutModule,
+            TableModule,
             ContainerModule
           ]
         })

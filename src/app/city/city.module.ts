@@ -5,16 +5,11 @@ import { CommonModule } from '@angular/common';
 import { CityRoutingModule } from './city-routing.module';
 
 /**@description Angular material.*/
-import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
-/**@description Resources.*/
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
+import { TableModule } from '../library/table/table.module';
 import { ButtonModule } from '../library/button/button.module';
 import { ContainerModule } from '../library/container/container.module';
 import { CepFormFieldModule } from '../library/cep-form-field/cep-form-field.module';
@@ -32,12 +27,9 @@ import { CityListComponent } from './city-list/city-list.component';
   imports: [
     CommonModule,
     CityRoutingModule,
-    MatSortModule,
     MatIconModule,
-    MatTableModule,
     MatButtonModule,
-    MatPaginatorModule,
-    FlexLayoutModule,
+    TableModule,
     ButtonModule,
     ContainerModule,
     CepFormFieldModule,

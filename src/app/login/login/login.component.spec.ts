@@ -5,9 +5,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-/**@description Resources.*/
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 /**@description Library.*/
 import { ButtonModule } from '../../library/button/button.module';
 import { ContainerModule } from '../../library/container/container.module';
@@ -34,7 +31,6 @@ describe('Login component ... ', () => {
             RouterTestingModule.withRoutes([]),
             HttpClientTestingModule,
             BrowserAnimationsModule,
-            FlexLayoutModule,
             ButtonModule,
             ContainerModule,
             EmailFormFieldModule,

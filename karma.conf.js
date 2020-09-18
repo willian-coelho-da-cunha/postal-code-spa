@@ -34,14 +34,15 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_DEBUG,
-    autoWatch: true,
+    autoWatch: false,
     browsers: [
       'ChromeHeadless'
     ],
     singleRun: true,
-    restartOnFileChange: true,
+    restartOnFileChange: false,
     browserDisconnectTolerance: 1,
     concurrency: 1,
-    retryLimit: 0
+    retryLimit: 0,
+    failOnSkippedTests: true
   });
 };

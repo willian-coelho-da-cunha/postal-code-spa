@@ -3,6 +3,7 @@
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.8. Algumas das tecnologias utilizadas na implementação do projeto foram:
 
 - Angular 10.0.8
+- Angular localize 10.0.14
 - Angular Material 10.1.2
 - Angular Flex Layout 10.0.0-beta.32
 - JSON Server 0.16.1
@@ -40,19 +41,25 @@ npm install -g json-server
 json-server database/database.json
 ```
 
-- Iniciar o servidor de desenvolvimento do Angular:
+- Iniciar o servidor de desenvolvimento do Angular (linguagem: pt-BR):
 
 ```
-ng serve
+ng serve --configuration=br
+```
+
+- Iniciar o servidor de desenvolvimento do Angular (linguagem: en-US):
+
+```
+ng serve --configuration=en
 ```
 
 - No browser, acessar o endereço `http://localhost:4200/`.
 
 - Utilizar as informações de login:
 
-- Username: trd@gmail.com
+- Username (e-mail): trd@gmail.com
 
-- Password: person123
+- Password (senha): person123
 
 ## Executar testes de unidade
 
@@ -106,14 +113,21 @@ Caso você não tenha seguido os passos descritos acima ainda, será necessário
 npm install
 ```
 
-Posteriormente, basta executar o comando abaixo:
+Posteriormente, basta executar o comando abaixo para obter o build em todas as localidades definidas no projeto:
 
 ```
 ng build
 ```
 
-Ou, basta executar o comando abaixo para obter o build para produção:
+Ou, basta executar o comando abaixo para obter o build para produção em todas as localidades definidas no projeto:
 
 ```
 ng build --prod
 ```
+
+Para obter o build para produção em uma linguagem específica, basta executar um dos comandos listados abaixo:
+
+| Linguagem | Comando                                   |
+| --        | --                                        |
+| en-US     | `ng build --configuration=production,en`  |
+| pt-BR     | `ng-build --configuration=production,br`  |

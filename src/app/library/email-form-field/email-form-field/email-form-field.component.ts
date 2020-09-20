@@ -31,6 +31,10 @@ export class EmailFormFieldComponent implements OnChanges {
     }
   }
 
+  public _error(): string | undefined {
+    return this.emailFormField.errors ? Object.keys(this.emailFormField.errors).shift() : undefined;
+  }
+
   public setValue(value: string): void {
     this.emailFormField.setValue(value);
   }

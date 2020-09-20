@@ -1,13 +1,13 @@
 <app-main [ipAlignHorizontal]="'center'">
   <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-cep-form-field
-      [ipLabel]="'Zip code'"
+      [ipLabel]="cepFormField_label"
       [ipRequired]="true"
       [ipReadonly]="saveInProgress">
     </app-cep-form-field>
 
     <app-text-form-field
-      [ipLabel]="'Name'"
+      [ipLabel]="textFormField_label"
       [ipRequired]="true"
       [ipReadonly]="saveInProgress">
     </app-text-form-field>
@@ -15,21 +15,21 @@
 
   <app-section id="a" [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-button
-      [ipLabel]="'Save'"
+      [ipLabel]="save_button_label"
       [ipColor]="'primary'"
       [ipDisabled]="submitButtonDisabled || saveInProgress"
       (opClick)="clickSave()">
     </app-button>
 
     <app-button
-      [ipLabel]="'Cancel'"
+      [ipLabel]="cancel_button_label"
       [ipColor]="'warn'"
       [ipDisabled]="saveInProgress"
       (opClick)="clickCancel()">
     </app-button>
 
     <app-button
-      [ipLabel]="'Log Out'"
+      [ipLabel]="logout_button_label"
       [ipColor]="'accent'"
       [ipDisabled]="saveInProgress"
       (opClick)="clickLogOut()">

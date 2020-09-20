@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
+  <file original="ng.template" id="ngi18n">
+    <unit id="2975053423798292374">
+      <notes>
+        <note category="location">src/app/library/email-form-field/email-form-field/email-form-field.component.html:13,15</note>
+        <note category="location">src/app/library/password-form-field/password-form-field/password-form-field.component.html:22,24</note>
+        <note category="location">src/app/library/cep-form-field/cep-form-field/cep-form-field.component.html:14,16</note>
+        <note category="location">src/app/library/text-form-field/text-form-field/text-form-field.component.html:13,15</note>
+      </notes>
+      <segment>
+        <source>You must enter a value!</source>
+        <target>You must enter a value!</target>
+      </segment>
+    </unit>
+    <unit id="262390303332443674">
+      <notes>
+        <note category="location">src/app/library/email-form-field/email-form-field/email-form-field.component.html:17,19</note>
+      </notes>
+      <segment>
+        <source>You must enter a valid email!</source>
+        <target>You must enter a valid email!</target>
+      </segment>
+    </unit>
+    <unit id="1056598303472996753">
+      <notes>
+        <note category="location">src/app/library/email-form-field/email-form-field/email-form-field.component.html:21,23</note>
+        <note category="location">src/app/library/password-form-field/password-form-field/password-form-field.component.html:26,28</note>
+        <note category="location">src/app/library/cep-form-field/cep-form-field/cep-form-field.component.html:26,28</note>
+        <note category="location">src/app/library/text-form-field/text-form-field/text-form-field.component.html:17,19</note>
+      </notes>
+      <segment>
+        <source>There is an unknown error!</source>
+        <target>There is an unknown error!</target>
+      </segment>
+    </unit>
+    <unit id="7327522597720878600">
+      <notes>
+        <note category="location">src/app/library/cep-form-field/cep-form-field/cep-form-field.component.html:18,20</note>
+      </notes>
+      <segment>
+        <source>Field value must fill the mask!</source>
+        <target>Field value must fill the mask!</target>
+      </segment>
+    </unit>
+    <unit id="6939012620640767229">
+      <notes>
+        <note category="location">src/app/library/cep-form-field/cep-form-field/cep-form-field.component.html:22,24</note>
+      </notes>
+      <segment>
+        <source>You must enter a valid cep! (100.000 / 999.999)!</source>
+        <target>You must enter a valid cep! (100.000 / 999.999)!</target>
+      </segment>
+    </unit>
+    <unit id="5113165610004622651">
+      <notes>
+        <note category="location">src/app/city/city-list/city-list.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Log Out</source>
+        <target>Log Out</target>
+      </segment>
+    </unit>
+    <unit id="3249513483374643425">
+      <notes>
+        <note category="location">src/app/city/city-list/city-list.component.html:18</note>
+      </notes>
+      <segment>
+        <source>Add</source>
+        <target>Add</target>
+      </segment>
+    </unit>
+    <unit id="8520023152129279437">
+      <segment>
+        <source>Log In</source>
+        <target>Log In</target>
+      </segment>
+    </unit>
+    <unit id="2326224001115885835">
+      <segment>
+        <source>Your e-mail address</source>
+        <target>Your e-mail address</target>
+      </segment>
+    </unit>
+    <unit id="4921687518561446633">
+      <segment>
+        <source>Your password</source>
+        <target>Your password</target>
+      </segment>
+    </unit>
+    <unit id="1200737650075932684">
+      <segment>
+        <source>Zip code</source>
+        <target>Zip code</target>
+      </segment>
+    </unit>
+    <unit id="8953033926734869941">
+      <segment>
+        <source>Name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="3768927257183755959">
+      <segment>
+        <source>Save</source>
+        <target>Save</target>
+      </segment>
+    </unit>
+    <unit id="2159130950882492111">
+      <segment>
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

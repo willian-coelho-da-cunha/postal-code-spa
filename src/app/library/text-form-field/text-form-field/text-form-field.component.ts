@@ -31,6 +31,10 @@ export class TextFormFieldComponent implements OnChanges {
     }
   }
 
+  public _error(): string | undefined {
+    return this.textFormField.errors ? Object.keys(this.textFormField.errors).shift() : undefined;
+  }
+
   public setValue(value: string): void {
     this.textFormField.setValue(value);
   }

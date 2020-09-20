@@ -1,13 +1,13 @@
 <app-main [ipAlignHorizontal]="'center'">
   <app-section [ipLayout]="'column'" [ipAlignHorizontal]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-email-form-field
-      [ipLabel]="'Your e-mail address'"
+      [ipLabel]="emailFormField_label"
       [ipRequired]="true"
       [ipReadonly]="loginInProgress">
     </app-email-form-field>
 
     <app-password-form-field
-      [ipLabel]="'Your password'"
+      [ipLabel]="passwordFormField_label"
       [ipRequired]="true"
       [ipReadonly]="loginInProgress">
     </app-password-form-field>
@@ -15,7 +15,7 @@
 
   <app-section [ipLayout]="'column'" [ipAlignVertical]="'center'" [ipXs]="10" [ipSm]="9" [ipMd]="8" [ipLg]="7" [ipXl]="6">
     <app-button
-      [ipLabel]="'Log In'"
+      [ipLabel]="button_label"
       [ipColor]="'primary'"
       [ipDisabled]="submitButtonDisabled || loginInProgress"
       (opClick)="login()">

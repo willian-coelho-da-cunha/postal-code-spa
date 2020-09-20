@@ -33,6 +33,10 @@ export class PasswordFormFieldComponent implements OnChanges {
     }
   }
 
+  public _error(): string | undefined {
+    return this.passwordFormField.errors ? Object.keys(this.passwordFormField.errors).shift() : undefined;
+  }
+
   public setValue(value: string): void {
     this.passwordFormField.setValue(value);
   }

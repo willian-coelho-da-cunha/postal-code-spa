@@ -9,10 +9,14 @@
     [formControl]="textFormField" />
 
   <mat-error *ngIf="textFormField?.invalid">
-    {{
-      textFormField.hasError('required')
-        ? 'You must enter a value!'
-        : ''
-    }}
+    <ng-container [ngSwitch]="_error()">
+      <ng-container *ngSwitchCase="'required'" i18n>
+        You must enter a value!
+      </ng-container>
+
+      <ng-container *ngSwitchDefault i18n>
+        There is an unknown error!
+      </ng-container>
+    </ng-container>
   </mat-error>
 </mat-form-field>

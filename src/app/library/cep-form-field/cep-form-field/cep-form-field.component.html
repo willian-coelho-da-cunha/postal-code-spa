@@ -10,14 +10,22 @@
     [formControl]="cepFormField" />
 
   <mat-error *ngIf="cepFormField?.invalid">
-    {{
-      cepFormField.hasError('required')
-        ? 'You must enter a value!'
-        : cepFormField.hasError('mask')
-          ? 'Field value must fill the mask!'
-          : cepFormField.hasError('cep')
-            ? 'You must enter a valid cep! (100.000 / 999.999)!'
-            : ''
-    }}
+    <ng-container [ngSwitch]="_error()">
+      <ng-container *ngSwitchCase="'required'" i18n>
+        You must enter a value!
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'mask'" i18n>
+        Field value must fill the mask!
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'cep'" i18n>
+        You must enter a valid cep! (100.000 / 999.999)!
+      </ng-container>
+
+      <ng-container *ngSwitchDefault i18n>
+        There is an unknown error!
+      </ng-container>
+    </ng-container>
   </mat-error>
 </mat-form-field>

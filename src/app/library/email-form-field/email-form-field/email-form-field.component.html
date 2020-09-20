@@ -9,12 +9,18 @@
     [formControl]="emailFormField" />
 
   <mat-error *ngIf="emailFormField?.invalid">
-    {{
-      emailFormField.hasError('required')
-        ? 'You must enter a value!'
-        : emailFormField.hasError('email')
-          ? 'You must enter a valid email!'
-          : ''
-    }}
+    <ng-container [ngSwitch]="_error()">
+      <ng-container *ngSwitchCase="'required'" i18n>
+        You must enter a value!
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'email'" i18n>
+        You must enter a valid email!
+      </ng-container>
+
+      <ng-container *ngSwitchDefault i18n>
+        There is an unknown error!
+      </ng-container>
+    </ng-container>
   </mat-error>
 </mat-form-field>

@@ -24,6 +24,12 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
 
   public submitButtonDisabled = true;
 
+  public button_label = $localize`Log In`;
+
+  public emailFormField_label = $localize`Your e-mail address`;
+
+  public passwordFormField_label = $localize`Your password`;
+
   @ViewChild(EmailFormFieldComponent) private emailFormField: EmailFormFieldComponent;
 
   @ViewChild(PasswordFormFieldComponent) private passwordFormField: PasswordFormFieldComponent;

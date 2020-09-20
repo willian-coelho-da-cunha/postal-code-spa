@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 
 export function cepValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
-    if (control.value > 100000 && control.value < 999999 && !(/(\d)\w\1/).test(String(control.value))) {
-      return null;
+    if (control.value && (/(\d)\w\1/).test(String(control.value))) {
+      return { cep: true };
     }
-    return { cep: true };
+    return null;
   }
 }
 
@@ -38,6 +38,10 @@ export class CepFormFieldComponent implements OnChanges {
       }
       this.cepFormField.updateValueAndValidity();
     }
+  }
+
+  public _error(): string | undefined {
+    return this.cepFormField.errors ? Object.keys(this.cepFormField.errors).shift() : undefined;
   }
 
   public setValue(value: number): void {

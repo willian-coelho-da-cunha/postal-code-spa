@@ -28,6 +28,16 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public submitButtonDisabled = true;
 
+  public cepFormField_label = $localize`Zip code`;
+
+  public textFormField_label = $localize`Name`;
+
+  public save_button_label = $localize`Save`;
+
+  public cancel_button_label = $localize`Cancel`;
+
+  public logout_button_label = $localize`Log Out`;
+
   @ViewChild(CepFormFieldComponent) private cepFormField: CepFormFieldComponent;
 
   @ViewChild(TextFormFieldComponent) private textFormField: TextFormFieldComponent;

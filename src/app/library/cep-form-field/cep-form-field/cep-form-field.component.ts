@@ -1,15 +1,9 @@
 import { Component, OnChanges, Input, HostBinding, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-export function cepValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: boolean } | null => {
-    if (control.value && (/(\d)\w\1/).test(String(control.value))) {
-      return { cep: true };
-    }
-    return null;
-  }
-}
+/**@description Custom validators.*/
+import { cepValidator } from '../validator/cep.validator';
 
 @Component({
   selector: 'app-cep-form-field',

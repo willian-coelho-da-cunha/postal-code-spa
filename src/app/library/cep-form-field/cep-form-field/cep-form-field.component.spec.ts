@@ -47,10 +47,14 @@ describe('Cep form field component ... ', () => {
   );
 
   it('should be created.',
-    () => {
+    async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
-      const component = fixture.componentInstance;
-      expect(component).toBeTruthy();
+
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(fixture.componentInstance).toBeTruthy();
+      done();
     }
   );
 
@@ -61,14 +65,14 @@ describe('Cep form field component ... ', () => {
       let cepFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipLabel = 'Inform a CEP';
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
+      await fixture.whenStable();
 
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.hasLabel().then(response => {
-        expect(response).toBeTrue();
-        done();
-      });
+
+      expect(await cepFormField.hasLabel()).toBeTrue();
+      done();
     }
   );
 
@@ -79,14 +83,14 @@ describe('Cep form field component ... ', () => {
       let cepFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipLabel = 'Inform a CEP';
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
-
+      await fixture.whenStable();
+      
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getLabel().then(response => {
-        expect(response).toEqual('Inform a CEP');
-        done();
-      });
+
+      expect(await cepFormField.getLabel()).toEqual('Inform a CEP');
+      done();
     }
   );
 
@@ -96,14 +100,14 @@ describe('Cep form field component ... ', () => {
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
 
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
-
+      await fixture.whenStable();
+      
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getAppearance().then(response => {
-        expect(response).toEqual('outline');
-        done();
-      });
+
+      expect(await cepFormField.getAppearance()).toEqual('outline');
+      done();
     }
   );
 
@@ -113,14 +117,14 @@ describe('Cep form field component ... ', () => {
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
 
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
-
+      await fixture.whenStable();
+      
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.isDisabled().then(response => {
-        expect(response).toBeFalse();
-        done();
-      });
+
+      expect(await cepFormField.isDisabled()).toBeFalse();
+      done();
     }
   );
 
@@ -128,19 +132,19 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
       let cepFormField: MatFormFieldHarness;
 
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
+      await fixture.whenStable();
 
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getControl().then((response: MatInputHarness | MatSelectHarness | null) => {
-        expect(response).not.toBeNull();
-        response?.isRequired().then(isrequired => {
-          expect(isrequired).toBeFalse();
-          done();
-        });
-      });
+      control = await cepFormField.getControl();
+
+      expect(control).not.toBeNull();
+      expect(await control?.isRequired()).toBeFalse();
+      done();
     }
   );
 
@@ -148,20 +152,20 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
       let cepFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = false;
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
+      await fixture.whenStable();
 
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getControl().then((response: MatInputHarness | MatSelectHarness | null) => {
-        expect(response).not.toBeNull();
-        response?.isRequired().then(isrequired => {
-          expect(isrequired).toBeFalse();
-          done();
-        });
-      });
+      control = await cepFormField.getControl();
+
+      expect(control).not.toBeNull();
+      expect(await control?.isRequired()).toBeFalse();
+      done();
     }
   );
 
@@ -169,50 +173,53 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
       let cepFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
+      await fixture.whenStable();
 
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getControl().then((response: MatInputHarness | MatSelectHarness | null) => {
-        expect(response).not.toBeNull();
-        response?.isRequired().then(isrequired => {
-          expect(isrequired).toBeTrue();
-          done();
-        });
-      });
+      control = await cepFormField.getControl();
+
+      expect(control).not.toBeNull();
+      expect(await control?.isRequired()).toBeTrue();
+      done();
     }
   );
 
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
+      let host: TestElement | undefined;
       let loader: HarnessLoader;
+      let control: MatInputHarness | MatSelectHarness | null;
+      let textErrors: Array<string>;
       let cepFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
-      loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
+      await fixture.whenStable();
 
+      loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      cepFormField.getControl().then((control: MatInputHarness | MatSelectHarness | null) => {
-        expect(control).not.toBeNull();
-        control?.host().then((host: TestElement | undefined) => {
-          expect(host).not.toBeUndefined();
-          host?.focus().then(() => {
-            host?.blur().then(() => {
-              cepFormField.getTextErrors().then((textErrors: Array<string>) => {
-                expect(textErrors.length).toBeGreaterThan(0);
-                expect(textErrors.shift()).toEqual('You must enter a value!');
-                expect(textErrors.length).toEqual(0);
-                done();
-              });
-            });
-          });
-        });
-      });
+
+      control = await cepFormField.getControl();
+      expect(control).not.toBeNull();
+
+      host = await control?.host();
+      expect(host).not.toBeUndefined();
+
+      await host?.focus();
+      await host?.blur();
+
+      textErrors = await cepFormField.getTextErrors();
+      expect(textErrors.length).toBeGreaterThan(0);
+      expect(textErrors.shift()).toEqual('You must enter a value!');
+      expect(textErrors.length).toEqual(0);
+      done();
     }
   );
 

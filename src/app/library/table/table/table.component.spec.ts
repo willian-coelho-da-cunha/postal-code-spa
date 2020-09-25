@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
 import { City } from '../../../city/model/city.model';
+import { ContainerModule } from '../../container/container.module';
 
 /**@description Components.*/
 import { TableComponent } from './table.component';
@@ -39,7 +40,8 @@ describe('Table component ... ', () => {
             MatTableModule,
             MatButtonModule,
             MatPaginatorModule,
-            FlexLayoutModule
+            FlexLayoutModule,
+            ContainerModule
           ]
         })
         .compileComponents();

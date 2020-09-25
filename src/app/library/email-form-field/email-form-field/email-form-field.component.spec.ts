@@ -268,6 +268,7 @@ describe('Email form field component ... ', () => {
       control = await cepFormField.getControl();
       host = await control?.host();
 
+      await host?.focus();
       await host?.sendKeys('someone@gmail.com');
       await host?.blur();
       textErrors = await cepFormField.getTextErrors();

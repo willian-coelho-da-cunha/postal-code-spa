@@ -297,6 +297,7 @@ describe('Cep form field component ... ', () => {
       control = await cepFormField.getControl();
       host = await control?.host();
 
+      await host?.focus();
       await host?.sendKeys('523563');
       await host?.blur();
       textErrors = await cepFormField.getTextErrors();

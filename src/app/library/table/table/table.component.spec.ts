@@ -14,16 +14,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**@description Library.*/
-import { City } from '../../../city/model/city.model';
+import { Table } from '../model/table.model';
 import { ContainerModule } from '../../container/container.module';
 
 /**@description Components.*/
 import { TableComponent } from './table.component';
 
 describe('Table component ... ', () => {
-
-  let component: TableComponent<City>;
-  let fixture: ComponentFixture<TableComponent<City>>;
 
   beforeEach(
     async(
@@ -49,17 +46,15 @@ describe('Table component ... ', () => {
     )
   );
 
-  beforeEach(
-    () => {
-      fixture = TestBed.createComponent<TableComponent<City>>(TableComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }
-  );
-
   it('should be created.',
-    () => {
-      expect(component).toBeTruthy();
+    async (done: DoneFn) => {
+      const fixture: ComponentFixture<TableComponent<Table>> = TestBed.createComponent<TableComponent<Table>>(TableComponent);
+
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(fixture.componentInstance).toBeTruthy();
+      done();
     }
   );
 });

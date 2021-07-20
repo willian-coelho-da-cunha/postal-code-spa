@@ -5,9 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**@description Angular material testing.*/
-import { HarnessLoader, TestElement } from '@angular/cdk/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
-import { MatSelectHarness } from '@angular/material/select/testing';
 import { MatFormFieldHarness } from '@angular/material/form-field/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
@@ -64,16 +63,17 @@ describe('Password form field component ... ', () => {
     async (done:DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
-      fixture.componentInstance.ipLabel = 'Inform a CEP';
+      fixture.componentInstance.ipLabel = 'Inform an E-mail';
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.hasLabel()).toBeTrue();
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.hasLabel()).toBeTrue();
       done();
     }
   );
@@ -82,16 +82,17 @@ describe('Password form field component ... ', () => {
     async (done:DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipLabel = 'Inform your password';
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.getLabel()).toEqual('Inform your password');
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.getLabel()).toEqual('Inform your password');
       done();
     }
   );
@@ -100,15 +101,16 @@ describe('Password form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let passwordFormField: MatFormFieldHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      passwordFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.getAppearance()).toEqual('outline');
+      expect(passwordFormField).not.toBeNull();
+      expect(await passwordFormField.getAppearance()).toEqual('outline');
       done();
     }
   );
@@ -117,15 +119,16 @@ describe('Password form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let passwordFormField: MatFormFieldHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      passwordFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.isDisabled()).toBeFalse();
+      expect(passwordFormField).not.toBeNull();
+      expect(await passwordFormField.isDisabled()).toBeFalse();
       done();
     }
   );
@@ -134,18 +137,16 @@ describe('Password form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let passwordInput: MatInputHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      passwordInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(passwordInput).not.toBeNull();
+      expect(await passwordInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -154,19 +155,17 @@ describe('Password form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let passwordInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = false;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      passwordInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(passwordInput).not.toBeNull();
+      expect(await passwordInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -175,19 +174,17 @@ describe('Password form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let passwordInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      passwordInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeTrue();
+      expect(passwordInput).not.toBeNull();
+      expect(await passwordInput.isRequired()).toBeTrue();
       done();
     }
   );
@@ -195,29 +192,26 @@ describe('Password form field component ... ', () => {
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
       let textErrors: Array<string>;
-      let cepFormField: MatFormFieldHarness;
+      let passwordInput: MatInputHarness;
+      let passwordFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      passwordFormField = await loader.getHarness(MatFormFieldHarness);
+      passwordInput = await loader.getHarness(MatInputHarness);
 
-      control = await cepFormField.getControl();
-      expect(control).not.toBeNull();
+      expect(passwordFormField).not.toBeNull();
+      expect(passwordInput).not.toBeNull();
 
-      host = await control?.host();
-      expect(host).not.toBeUndefined();
+      await passwordInput?.focus();
+      await passwordInput?.blur();
 
-      await host?.focus();
-      await host?.blur();
-
-      textErrors = await cepFormField.getTextErrors();
+      textErrors = await passwordFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a value!');
       expect(textErrors.length).toEqual(0);
@@ -228,25 +222,26 @@ describe('Password form field component ... ', () => {
   it('should show no errors when form field is filled with a valid password.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
       let textErrors: Array<string>;
-      let cepFormField: MatFormFieldHarness;
+      let passwordInput: MatInputHarness;
+      let passwordFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      passwordFormField = await loader.getHarness(MatFormFieldHarness);
+      passwordInput = await loader.getHarness(MatInputHarness);
 
-      await host?.focus();
-      await host?.sendKeys('523563');
-      await host?.blur();
-      textErrors = await cepFormField.getTextErrors();
+      expect(passwordFormField).not.toBeNull();
+      expect(passwordInput).not.toBeNull();
+
+      await passwordInput?.focus();
+      await passwordInput?.setValue('523563');
+      await passwordInput?.blur();
+      textErrors = await passwordFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
       done();
     }

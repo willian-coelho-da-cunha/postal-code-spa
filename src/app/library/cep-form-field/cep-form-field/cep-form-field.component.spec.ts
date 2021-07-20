@@ -5,9 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**@description Angular material testing.*/
-import { HarnessLoader, TestElement } from '@angular/cdk/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
-import { MatSelectHarness } from '@angular/material/select/testing';
 import { MatFormFieldHarness } from '@angular/material/form-field/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
@@ -132,18 +131,16 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let cepInput: MatInputHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(cepInput).not.toBeNull();
+      expect(await cepInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -152,19 +149,17 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let cepInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = false;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(cepInput).not.toBeNull();
+      expect(await cepInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -173,19 +168,17 @@ describe('Cep form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let cepInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeTrue();
+      expect(cepInput).not.toBeNull();
+      expect(await cepInput.isRequired()).toBeTrue();
       done();
     }
   );
@@ -193,9 +186,8 @@ describe('Cep form field component ... ', () => {
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let cepInput: MatInputHarness;
       let textErrors: Array<string>;
       let cepFormField: MatFormFieldHarness;
 
@@ -205,15 +197,13 @@ describe('Cep form field component ... ', () => {
 
       loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      control = await cepFormField.getControl();
-      expect(control).not.toBeNull();
+      expect(cepFormField).not.toBeNull();
+      expect(cepInput).not.toBeNull();
 
-      host = await control?.host();
-      expect(host).not.toBeUndefined();
-
-      await host?.focus();
-      await host?.blur();
+      await cepInput?.focus();
+      await cepInput?.blur();
 
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
@@ -226,9 +216,8 @@ describe('Cep form field component ... ', () => {
   it('should show "Field value must fill the mask!" when form field is not filled entirely.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let cepInput: MatInputHarness;
       let textErrors: Array<string>;
       let cepFormField: MatFormFieldHarness;
 
@@ -238,11 +227,10 @@ describe('Cep form field component ... ', () => {
 
       loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      await host?.sendKeys('012');
-      await host?.blur();
+      await cepInput?.setValue('012');
+      await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('Field value must fill the mask!');
@@ -254,9 +242,8 @@ describe('Cep form field component ... ', () => {
   it('should show "You must enter a valid cep! (100.000 / 999.999)!" when form field is filled with any repeated alternated number.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let cepInput: MatInputHarness;
       let textErrors: Array<string>;
       let cepFormField: MatFormFieldHarness;
 
@@ -266,11 +253,10 @@ describe('Cep form field component ... ', () => {
 
       loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      await host?.sendKeys('552523');
-      await host?.blur();
+      await cepInput?.setValue('552523');
+      await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a valid cep! (100.000 / 999.999)!');
@@ -282,9 +268,8 @@ describe('Cep form field component ... ', () => {
   it('should show no errors when form field is filled with a valid number.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let cepInput: MatInputHarness;
       let textErrors: Array<string>;
       let cepFormField: MatFormFieldHarness;
 
@@ -294,12 +279,11 @@ describe('Cep form field component ... ', () => {
 
       loader = TestbedHarnessEnvironment.loader(fixture);
       cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      cepInput = await loader.getHarness(MatInputHarness);
 
-      await host?.focus();
-      await host?.sendKeys('523563');
-      await host?.blur();
+      await cepInput?.focus();
+      await cepInput?.setValue('523563');
+      await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
       done();

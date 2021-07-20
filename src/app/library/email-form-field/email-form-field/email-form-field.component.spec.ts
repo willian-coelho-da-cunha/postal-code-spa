@@ -5,9 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**@description Angular material testing.*/
-import { HarnessLoader, TestElement } from '@angular/cdk/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
-import { MatSelectHarness } from '@angular/material/select/testing';
 import { MatFormFieldHarness } from '@angular/material/form-field/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
@@ -60,16 +59,17 @@ describe('Email form field component ... ', () => {
     async (done:DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipLabel = 'Inform an Email';
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.hasLabel()).toBeTrue();
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.hasLabel()).toBeTrue();
       done();
     }
   );
@@ -78,16 +78,17 @@ describe('Email form field component ... ', () => {
     async (done:DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipLabel = 'Inform an Email';
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.getLabel()).toEqual('Inform an Email');
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.getLabel()).toEqual('Inform an Email');
       done();
     }
   );
@@ -96,15 +97,16 @@ describe('Email form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.getAppearance()).toEqual('outline');
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.getAppearance()).toEqual('outline');
       done();
     }
   );
@@ -113,15 +115,16 @@ describe('Email form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
       
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
 
-      expect(await cepFormField.isDisabled()).toBeFalse();
+      expect(emailFormField).not.toBeNull();
+      expect(await emailFormField.isDisabled()).toBeFalse();
       done();
     }
   );
@@ -130,18 +133,16 @@ describe('Email form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let emailInput: MatInputHarness;
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(emailInput).not.toBeNull();
+      expect(await emailInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -150,19 +151,17 @@ describe('Email form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let emailInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = false;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeFalse();
+      expect(emailInput).not.toBeNull();
+      expect(await emailInput.isRequired()).toBeFalse();
       done();
     }
   );
@@ -171,50 +170,44 @@ describe('Email form field component ... ', () => {
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
-      let cepFormField: MatFormFieldHarness;
+      let emailInput: MatInputHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      expect(control).not.toBeNull();
-      expect(await control?.isRequired()).toBeTrue();
+      expect(emailInput).not.toBeNull();
+      expect(await emailInput.isRequired()).toBeTrue();
       done();
     }
   );
 
-
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let emailInput: MatInputHarness;
       let textErrors: Array<string>;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      control = await cepFormField.getControl();
-      expect(control).not.toBeNull();
+      expect(emailFormField).not.toBeNull();
+      expect(emailInput).not.toBeNull();
 
-      host = await control?.host();
-      expect(host).not.toBeUndefined();
+      await emailInput?.focus();
+      await emailInput?.blur();
 
-      await host?.focus();
-      await host?.blur();
-
-      textErrors = await cepFormField.getTextErrors();
+      textErrors = await emailFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a value!');
       expect(textErrors.length).toEqual(0);
@@ -225,24 +218,25 @@ describe('Email form field component ... ', () => {
   it('should show "You must enter a valid email!" when form field is not filled with any valid email.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let emailInput: MatInputHarness;
       let textErrors: Array<string>;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      await host?.sendKeys('aa');
-      await host?.blur();
-      textErrors = await cepFormField.getTextErrors();
+      expect(emailFormField).not.toBeNull();
+      expect(emailInput).not.toBeNull();
+
+      await emailInput?.setValue('aa');
+      await emailInput?.blur();
+      textErrors = await emailFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a valid email!');
       expect(textErrors.length).toEqual(0);
@@ -253,25 +247,26 @@ describe('Email form field component ... ', () => {
   it('should show no errors when form field is filled with a valid email.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
-      let host: TestElement | undefined;
       let loader: HarnessLoader;
-      let control: MatInputHarness | MatSelectHarness | null;
+      let emailInput: MatInputHarness;
       let textErrors: Array<string>;
-      let cepFormField: MatFormFieldHarness;
+      let emailFormField: MatFormFieldHarness;
 
       fixture.componentInstance.ipRequired = true;
       fixture.detectChanges();
       await fixture.whenStable();
 
       loader = TestbedHarnessEnvironment.loader(fixture);
-      cepFormField = await loader.getHarness(MatFormFieldHarness);
-      control = await cepFormField.getControl();
-      host = await control?.host();
+      emailFormField = await loader.getHarness(MatFormFieldHarness);
+      emailInput = await loader.getHarness(MatInputHarness);
 
-      await host?.focus();
-      await host?.sendKeys('someone@gmail.com');
-      await host?.blur();
-      textErrors = await cepFormField.getTextErrors();
+      expect(emailFormField).not.toBeNull();
+      expect(emailInput).not.toBeNull();
+
+      await emailInput?.focus();
+      await emailInput?.setValue('someone@gmail.com');
+      await emailInput?.blur();
+      textErrors = await emailFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
       done();
     }

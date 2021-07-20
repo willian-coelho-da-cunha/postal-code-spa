@@ -40,6 +40,7 @@
               "src/styles.css"
             ],
             "scripts": [],
+            "aot": true,
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -91,8 +92,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "trd-front-cep:build",
-            "aot": true
+            "browserTarget": "trd-front-cep:build"
           },
           "configurations": {
             "production": {

@@ -8,14 +8,14 @@
     (matSortChange)="matSortChange($event)">
     <ng-container *ngFor="let column of ipColumns">
       <ng-container *ngIf="column?.allowSort === false">
-        <ng-container [matColumnDef]="column?.attributeName">
+        <ng-container [matColumnDef]="column.attributeName">
           <th mat-header-cell *matHeaderCellDef> {{ column?.columnName }} </th>
           <td mat-cell *matCellDef="let element"> {{ element[column.attributeName] }} </td>
         </ng-container>
       </ng-container>
 
       <ng-container *ngIf="column?.allowSort === true">
-        <ng-container [matColumnDef]="column?.attributeName">
+        <ng-container [matColumnDef]="column.attributeName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column?.columnName }} </th>
           <td mat-cell *matCellDef="let element"> {{ element[column.attributeName] }} </td>
         </ng-container>        
@@ -23,7 +23,7 @@
     </ng-container>
 
     <ng-container *ngFor="let action of ipActions">
-      <ng-container [matColumnDef]="action?.code">
+      <ng-container [matColumnDef]="action.code">
         <th mat-header-cell *matHeaderCellDef> {{ action?.columnName }} </th>
         <td mat-cell *matCellDef="let element">
           <p class="cell-actions">

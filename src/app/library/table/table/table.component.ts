@@ -22,13 +22,13 @@ export class TableComponent<T> implements OnChanges, OnInit {
 
   public tableControl = TableControlFactory.getInstance([]);
 
-  public columns = new Array<string>();
+  public columns: Array<string> = [];
 
-  @Input() public ipSort = new Array<string>();
+  @Input() public ipSort: Array<string> = [];
 
-  @Input() public ipColumns = Array<TableColumn>();
+  @Input() public ipColumns: Array<TableColumn> = [];
 
-  @Input() public ipActions = Array<TableActionColumn>();
+  @Input() public ipActions: Array<TableActionColumn> = [];
 
   @Output() public opEdit = new EventEmitter<T>();
 

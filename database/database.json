@@ -10,33 +10,33 @@
   "cities": [
     {
       "name": "New Jersey",
-      "zipCode": "123456",
-      "id": 3
+      "zipCode": "12345658",
+      "id": 10
     },
     {
       "name": "Texas",
-      "zipCode": "145698",
-      "id": 5
+      "zipCode": "14569800",
+      "id": 11
     },
     {
       "name": "Toronto",
-      "zipCode": "456987",
-      "id": 6
+      "zipCode": "45698798",
+      "id": 12
+    },
+    {
+      "name": "Toronto",
+      "zipCode": "45698749",
+      "id": 13
     },
     {
       "name": "Los Angeles",
-      "zipCode": "523698",
-      "id": 7
+      "zipCode": "52369811",
+      "id": 14
     },
     {
       "name": "Las Vegas",
-      "zipCode": "326598",
-      "id": 8
-    },
-    {
-      "name": "Oxford",
-      "zipCode": "785421",
-      "id": 9
+      "zipCode": "32659877",
+      "id": 15
     }
   ]
 }

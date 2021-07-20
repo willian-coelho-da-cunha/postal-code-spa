@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 /**@description Resources.*/
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,7 +12,7 @@ describe('Section component ... ', () => {
   let fixture: ComponentFixture<SectionComponent>;
 
   beforeEach(
-    async(
+    waitForAsync(
       () => {
         TestBed.configureTestingModule({
           declarations: [

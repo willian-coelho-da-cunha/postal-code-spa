@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ import { TextFormFieldComponent } from './text-form-field.component';
 describe('Text form field component ... ', () => {
 
   beforeEach(
-    async(
+    waitForAsync(
       () => {
         TestBed.configureTestingModule({
           declarations: [

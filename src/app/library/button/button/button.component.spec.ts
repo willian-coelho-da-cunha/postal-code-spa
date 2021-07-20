@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
@@ -26,7 +26,7 @@ describe('Cancel button component ... ', () => {
   const PRIMARY_BACKGROUND_COLOR = 'rgb(63, 81, 181)';
 
   beforeEach(
-    async(
+    waitForAsync(
       () => {
         TestBed.configureTestingModule({
           declarations: [

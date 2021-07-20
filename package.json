@@ -1,6 +1,6 @@
 {
-  "name": "trd-front-cep",
-  "version": "0.0.0",
+  "name": "postal-code-spa",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,10 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run trd-front-cep:serve-ssr",
-    "serve:ssr": "node dist/trd-front-cep/server/main.js",
-    "build:ssr": "ng build --configuration production && ng run trd-front-cep:server:production",
-    "prerender": "ng run trd-front-cep:prerender"
+    "dev:ssr": "ng run postal-code-spa:serve-ssr",
+    "serve:ssr": "node dist/postal-code-spa/server/main.js",
+    "build:ssr": "ng build --configuration production && ng run postal-code-spa:server:production",
+    "prerender": "ng run postal-code-spa:prerender"
   },
   "private": true,
   "dependencies": {

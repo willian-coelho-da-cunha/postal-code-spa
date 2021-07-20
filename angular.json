@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "trd-front-cep": {
+    "postal-code-spa": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/trd-front-cep/browser",
+            "outputPath": "dist/postal-code-spa/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -92,24 +92,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "trd-front-cep:build"
+            "browserTarget": "postal-code-spa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "trd-front-cep:build:production"
+              "browserTarget": "postal-code-spa:build:production"
             },
             "en": {
-              "browserTarget": "trd-front-cep:build:en"
+              "browserTarget": "postal-code-spa:build:en"
             },
             "br": {
-              "browserTarget": "trd-front-cep:build:br"
+              "browserTarget": "postal-code-spa:build:br"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "trd-front-cep:build"
+            "browserTarget": "postal-code-spa:build"
           }
         },
         "test": {
@@ -148,18 +148,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "trd-front-cep:serve:en"
+            "devServerTarget": "postal-code-spa:serve:en"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "trd-front-cep:serve:production"
+              "devServerTarget": "postal-code-spa:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/trd-front-cep/server",
+            "outputPath": "dist/postal-code-spa/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "sourceMap": true,
@@ -183,21 +183,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "trd-front-cep:build",
-            "serverTarget": "trd-front-cep:server"
+            "browserTarget": "postal-code-spa:build",
+            "serverTarget": "postal-code-spa:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "trd-front-cep:build:production",
-              "serverTarget": "trd-front-cep:server:production"
+              "browserTarget": "postal-code-spa:build:production",
+              "serverTarget": "postal-code-spa:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "trd-front-cep:build:production",
-            "serverTarget": "trd-front-cep:server:production",
+            "browserTarget": "postal-code-spa:build:production",
+            "serverTarget": "postal-code-spa:server:production",
             "routes": [
               "/"
             ]
@@ -209,5 +209,5 @@
       }
     }
   },
-  "defaultProject": "trd-front-cep"
+  "defaultProject": "postal-code-spa"
 }

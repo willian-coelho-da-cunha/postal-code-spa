@@ -35,7 +35,7 @@ export class CepFormFieldComponent implements OnChanges {
   }
 
   public _error(): string | undefined {
-    return this.cepFormField.errors ? Object.keys(this.cepFormField.errors).shift() : undefined;
+    return this.cepFormField.errors ? Object.keys(this.cepFormField.errors).pop() : undefined;
   }
 
   public setValue(value: number): void {

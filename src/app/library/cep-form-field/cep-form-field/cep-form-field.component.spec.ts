@@ -239,7 +239,7 @@ describe('Cep form field component ... ', () => {
     }
   );
 
-  it('should show "You must enter a valid cep! (100.000 / 999.999)!" when form field is filled with any repeated alternated number.',
+  it('should show "You must enter a valid cep! (10000-000 / 99999-999)!" when form field is filled with any repeated alternated number.',
     async (done: DoneFn) => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
@@ -255,11 +255,11 @@ describe('Cep form field component ... ', () => {
       cepFormField = await loader.getHarness(MatFormFieldHarness);
       cepInput = await loader.getHarness(MatInputHarness);
 
-      await cepInput?.setValue('552523');
+      await cepInput?.setValue('05525230');
       await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBeGreaterThan(0);
-      expect(textErrors.shift()).toEqual('You must enter a valid cep! (100.000 / 999.999)!');
+      expect(textErrors.shift()).toEqual('You must enter a valid cep! (10000-000 / 99999-999)!');
       expect(textErrors.length).toEqual(0);
       done();
     }
@@ -282,7 +282,7 @@ describe('Cep form field component ... ', () => {
       cepInput = await loader.getHarness(MatInputHarness);
 
       await cepInput?.focus();
-      await cepInput?.setValue('523563');
+      await cepInput?.setValue('52344563');
       await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBe(0);

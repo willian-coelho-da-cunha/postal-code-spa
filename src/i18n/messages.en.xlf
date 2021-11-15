@@ -43,13 +43,13 @@
         <target>Field value must fill the mask!</target>
       </segment>
     </unit>
-    <unit id="6939012620640767229">
+    <unit id="3697714335139772798">
       <notes>
         <note category="location">src/app/library/cep-form-field/cep-form-field/cep-form-field.component.html:22,24</note>
       </notes>
       <segment>
-        <source>You must enter a valid cep! (100.000 / 999.999)!</source>
-        <target>You must enter a valid cep! (100.000 / 999.999)!</target>
+        <source>You must enter a valid cep! (10000-000 / 99999-999)!</source>
+        <target>You must enter a valid cep! (10000-000 / 99999-999)!</target>
       </segment>
     </unit>
     <unit id="5113165610004622651">

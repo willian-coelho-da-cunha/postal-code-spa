@@ -1,23 +1,25 @@
-# Postal code S. P. A.
+# Postal Code S. P. A.
 
-Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.8. Algumas das tecnologias utilizadas na implementação do projeto foram:
+Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.8. 
 
-- Angular 10.0.8
-- Angular localize 10.0.14
-- Angular Material 10.1.2
-- Angular Flex Layout 10.0.0-beta.32
+Abaixo estão relacionadas algumas das tecnologias utilizadas na implementação do projeto.
+
+- Angular 10.0.8 / ***Updated to version 13.0.1***
+- Angular localize 10.0.14 / ***Updated to version 13.0.1***
+- Angular Material 10.1.2 / ***Updated to version 13.0.1***
+- Angular Flex Layout 10.0.0-beta.32 / ***Updated to version 12.0.0-beta.34***
 - JSON Server 0.16.1
-- NGX Mask 10.0.1
-- TypeScript 3.9.5
+- NGX Mask 10.0.1 / ***Updated to version 12.0.0***
+- TypeScript 3.9.5 /***Updated to version 4.4.4***
 - HTML5
 - CSS3
-- Karma 5.0.0 (Testes de unidade)
+- Karma 5.0.0 (Testes de unidade) / ***Updated to version 6.4.3***
 
-Inicialmente, este projeto foi desenvolvido com a simulação de uma API, utilizando para isso o JSON Server 0.16.1. O objetivo foi ganhar produtividade no desenvolvimento do Front-End ao mesmo tempo em que haveria uma estrutura relativamente fácil para se adaptar a uma integração com o Back-End propriamente dito. O repositório contendo o Back-End que atenderá esse projeto é o **Postal code A. P. I.**, que se encontra em meu perfil no GitHub.
+Ainda, a implementação deste projeto contou com a simulação de uma API RestFull. O responsável por essa simulação foi o JSON Server 0.16.1.
 
+
+---
 ## Executar o projeto localmente
-
-**Atenção**: Para executar este projeto localmente hoje, não é necessário manipular o repositório que contém o Back-End do mesmo. No entanto, pretende-se mudar este cenário em breve.
 
 Para executar este projeto localmente, você precisará:
 
@@ -61,6 +63,7 @@ ng serve --configuration=en
 
 - Password (senha): person123
 
+---
 ## Executar testes de unidade
 
 [Karma](https://karma-runner.github.io).
@@ -81,6 +84,7 @@ Posteriormente, basta executar o comando abaixo:
 ng test
 ```
 
+---
 ## Executar testes end-to-end
 
 [Protractor](http://www.protractortest.org/).
@@ -101,6 +105,7 @@ Posteriormente, basta executar o comando abaixo:
 ng e2e
 ```
 
+---
 ## Fazer o build do projeto
 
 Caso você não tenha seguido os passos descritos acima ainda, será necessário:

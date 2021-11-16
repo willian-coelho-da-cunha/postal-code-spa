@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { take } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
 
 /**@description Angular material testing.*/
-import { HarnessLoader } from '@angular/cdk/testing';
+import { HarnessLoader, TestElement } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 /**@description Angular material.*/
@@ -19,11 +18,11 @@ import { ButtonComponent } from './button.component';
 
 describe('Cancel button component ... ', () => {
 
-  const WARN_BACKGROUND_COLOR = 'rgb(244, 67, 54)';
+  const WARN_BACKGROUND_COLOR: string = 'rgb(244, 67, 54)';
 
-  const ACCENT_BACKGROUND_COLOR = 'rgb(255, 64, 129)';
+  const ACCENT_BACKGROUND_COLOR: string = 'rgb(255, 64, 129)';
 
-  const PRIMARY_BACKGROUND_COLOR = 'rgb(63, 81, 181)';
+  const PRIMARY_BACKGROUND_COLOR: string = 'rgb(63, 81, 181)';
 
   beforeEach(
     waitForAsync(
@@ -46,13 +45,13 @@ describe('Cancel button component ... ', () => {
   it('should be created.',
     () => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
-      const component = fixture.componentInstance;
+      const component: ButtonComponent = fixture.componentInstance;
       expect(component).toBeTruthy();
     }
   );
 
   it('should has label "Salvar".',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
@@ -62,15 +61,12 @@ describe('Cancel button component ... ', () => {
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      button.getText().then(response => {
-        expect(response).toEqual('Salvar');
-        done();
-      });
+      expect(await button.getText()).toEqual('Salvar');
     }
   );
 
   it('should be disabled.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
@@ -80,82 +76,74 @@ describe('Cancel button component ... ', () => {
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      button.isDisabled().then(response => {
-        expect(response).toBeTrue();
-        done();
-      });
+      expect(await button.isDisabled()).toBeTrue();
     }
   );
 
   it('should has warn background-color.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
+      let buttonHost: TestElement;
 
       fixture.componentInstance.ipColor = 'warn';
       loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      (await button.host()).getCssValue('background-color').then(response => {
-        expect(response).toEqual(WARN_BACKGROUND_COLOR);
-        done();
-      });
+      buttonHost = await button.host();
+      expect(await buttonHost.getCssValue('background-color')).toEqual(WARN_BACKGROUND_COLOR);
     }
   );
 
   it('should has accent background-color.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
+      let buttonHost: TestElement;
 
       fixture.componentInstance.ipColor = 'accent';
       loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      (await button.host()).getCssValue('background-color').then(response => {
-        expect(response).toEqual(ACCENT_BACKGROUND_COLOR);
-        done();
-      });
+      buttonHost = await button.host();
+      expect(await buttonHost.getCssValue('background-color')).toEqual(ACCENT_BACKGROUND_COLOR);
     }
   );
 
   it('should has primary background-color.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
       let button: MatButtonHarness;
       let loader: HarnessLoader;
+      let buttonHost: TestElement;
 
       fixture.componentInstance.ipColor = 'primary';
       loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      (await button.host()).getCssValue('background-color').then(response => {
-        expect(response).toEqual(PRIMARY_BACKGROUND_COLOR);
-        done();
-      });
+      buttonHost = await button.host();
+      expect(await buttonHost.getCssValue('background-color')).toEqual(PRIMARY_BACKGROUND_COLOR);
     }
   );
 
   it('should emit an event when clicked on it.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<ButtonComponent> = TestBed.createComponent(ButtonComponent);
+      const opClickSpy: jasmine.Spy<any> = spyOn(fixture.componentInstance.opClick, 'emit');
       let button: MatButtonHarness;
       let loader: HarnessLoader;
 
-      fixture.componentInstance.opClick.pipe(take(1)).subscribe(response => {
-        expect(response).toBeUndefined();
-        done();
-      });
       loader = TestbedHarnessEnvironment.loader(fixture);
       fixture.detectChanges();
 
       button = await loader.getHarness(MatButtonHarness);
-      button.click();
+      await button.click();
+      expect(opClickSpy).toHaveBeenCalled();
     }
   );
 });

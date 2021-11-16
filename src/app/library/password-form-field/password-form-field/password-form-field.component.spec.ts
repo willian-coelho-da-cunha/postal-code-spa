@@ -48,19 +48,18 @@ describe('Password form field component ... ', () => {
   );
 
   it('should be created.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       expect(fixture.componentInstance).toBeTruthy();
-      done();
     }
   );
 
   it('should has a label.',
-    async (done:DoneFn) => {
+    async () => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -74,12 +73,11 @@ describe('Password form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.hasLabel()).toBeTrue();
-      done();
     }
   );
 
   it('should has a label as "Inform your password"',
-    async (done:DoneFn) => {
+    async () => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -93,12 +91,11 @@ describe('Password form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.getLabel()).toEqual('Inform your password');
-      done();
     }
   );
 
   it('should has outline appearance.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let passwordFormField: MatFormFieldHarness;
@@ -111,12 +108,11 @@ describe('Password form field component ... ', () => {
 
       expect(passwordFormField).not.toBeNull();
       expect(await passwordFormField.getAppearance()).toEqual('outline');
-      done();
     }
   );
 
   it('should be enabled by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let passwordFormField: MatFormFieldHarness;
@@ -129,12 +125,11 @@ describe('Password form field component ... ', () => {
 
       expect(passwordFormField).not.toBeNull();
       expect(await passwordFormField.isDisabled()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let passwordInput: MatInputHarness;
@@ -147,12 +142,11 @@ describe('Password form field component ... ', () => {
 
       expect(passwordInput).not.toBeNull();
       expect(await passwordInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required when input property ipRequired is equal false.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let passwordInput: MatInputHarness;
@@ -166,12 +160,11 @@ describe('Password form field component ... ', () => {
 
       expect(passwordInput).not.toBeNull();
       expect(await passwordInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be required when input property ipRequired is equal true.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let passwordInput: MatInputHarness;
@@ -185,12 +178,11 @@ describe('Password form field component ... ', () => {
 
       expect(passwordInput).not.toBeNull();
       expect(await passwordInput.isRequired()).toBeTrue();
-      done();
     }
   );
 
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let textErrors: Array<string>;
@@ -215,12 +207,11 @@ describe('Password form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a value!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show no errors when form field is filled with a valid password.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<PasswordFormFieldComponent> = TestBed.createComponent(PasswordFormFieldComponent);
       let loader: HarnessLoader;
       let textErrors: Array<string>;
@@ -243,7 +234,6 @@ describe('Password form field component ... ', () => {
       await passwordInput?.blur();
       textErrors = await passwordFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
-      done();
     }
   );
 });

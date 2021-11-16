@@ -46,19 +46,18 @@ describe('Cep form field component ... ', () => {
   );
 
   it('should be created.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       expect(fixture.componentInstance).toBeTruthy();
-      done();
     }
   );
 
   it('should has a label.',
-    async (done:DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
@@ -71,12 +70,11 @@ describe('Cep form field component ... ', () => {
       cepFormField = await loader.getHarness(MatFormFieldHarness);
 
       expect(await cepFormField.hasLabel()).toBeTrue();
-      done();
     }
   );
 
   it('should has a label as "Inform a CEP"',
-    async (done:DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
@@ -89,12 +87,11 @@ describe('Cep form field component ... ', () => {
       cepFormField = await loader.getHarness(MatFormFieldHarness);
 
       expect(await cepFormField.getLabel()).toEqual('Inform a CEP');
-      done();
     }
   );
 
   it('should has outline appearance.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
@@ -106,12 +103,11 @@ describe('Cep form field component ... ', () => {
       cepFormField = await loader.getHarness(MatFormFieldHarness);
 
       expect(await cepFormField.getAppearance()).toEqual('outline');
-      done();
     }
   );
 
   it('should be enabled by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepFormField: MatFormFieldHarness;
@@ -123,12 +119,11 @@ describe('Cep form field component ... ', () => {
       cepFormField = await loader.getHarness(MatFormFieldHarness);
 
       expect(await cepFormField.isDisabled()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -141,12 +136,11 @@ describe('Cep form field component ... ', () => {
 
       expect(cepInput).not.toBeNull();
       expect(await cepInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required when input property ipRequired is equal false.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -160,12 +154,11 @@ describe('Cep form field component ... ', () => {
 
       expect(cepInput).not.toBeNull();
       expect(await cepInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be required when input property ipRequired is equal true.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -179,12 +172,11 @@ describe('Cep form field component ... ', () => {
 
       expect(cepInput).not.toBeNull();
       expect(await cepInput.isRequired()).toBeTrue();
-      done();
     }
   );
 
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -209,12 +201,11 @@ describe('Cep form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a value!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show "Field value must fill the mask!" when form field is not filled entirely.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -235,12 +226,11 @@ describe('Cep form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('Field value must fill the mask!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show "You must enter a valid cep! (10000-000 / 99999-999)!" when form field is filled with any repeated alternated number.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -261,12 +251,11 @@ describe('Cep form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a valid cep! (10000-000 / 99999-999)!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show no errors when form field is filled with a valid number.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<CepFormFieldComponent> = TestBed.createComponent(CepFormFieldComponent);
       let loader: HarnessLoader;
       let cepInput: MatInputHarness;
@@ -286,7 +275,6 @@ describe('Cep form field component ... ', () => {
       await cepInput?.blur();
       textErrors = await cepFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
-      done();
     }
   );
 });

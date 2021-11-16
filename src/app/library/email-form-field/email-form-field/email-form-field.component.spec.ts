@@ -44,19 +44,18 @@ describe('Email form field component ... ', () => {
   );
 
   it('should be created.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       expect(fixture.componentInstance).toBeTruthy();
-      done();
     }
   );
 
   it('should has a label.',
-    async (done:DoneFn) => {
+    async () => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -70,12 +69,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.hasLabel()).toBeTrue();
-      done();
     }
   );
 
   it('should has a label as "Inform an Email"',
-    async (done:DoneFn) => {
+    async () => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -89,12 +87,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.getLabel()).toEqual('Inform an Email');
-      done();
     }
   );
 
   it('should has outline appearance.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -107,12 +104,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.getAppearance()).toEqual('outline');
-      done();
     }
   );
 
   it('should be enabled by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailFormField: MatFormFieldHarness;
@@ -125,12 +121,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailFormField).not.toBeNull();
       expect(await emailFormField.isDisabled()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required by default.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -143,12 +138,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailInput).not.toBeNull();
       expect(await emailInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be not required when input property ipRequired is equal false.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -162,12 +156,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailInput).not.toBeNull();
       expect(await emailInput.isRequired()).toBeFalse();
-      done();
     }
   );
 
   it('should be required when input property ipRequired is equal true.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -181,12 +174,11 @@ describe('Email form field component ... ', () => {
 
       expect(emailInput).not.toBeNull();
       expect(await emailInput.isRequired()).toBeTrue();
-      done();
     }
   );
 
   it('should show "You must enter a value!" when form field is required and the input field is focused and immediately lost the focus.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -211,12 +203,11 @@ describe('Email form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a value!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show "You must enter a valid email!" when form field is not filled with any valid email.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -240,12 +231,11 @@ describe('Email form field component ... ', () => {
       expect(textErrors.length).toBeGreaterThan(0);
       expect(textErrors.shift()).toEqual('You must enter a valid email!');
       expect(textErrors.length).toEqual(0);
-      done();
     }
   );
 
   it('should show no errors when form field is filled with a valid email.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<EmailFormFieldComponent> = TestBed.createComponent(EmailFormFieldComponent);
       let loader: HarnessLoader;
       let emailInput: MatInputHarness;
@@ -268,7 +258,6 @@ describe('Email form field component ... ', () => {
       await emailInput?.blur();
       textErrors = await emailFormField.getTextErrors();
       expect(textErrors.length).toBe(0);
-      done();
     }
   );
 });

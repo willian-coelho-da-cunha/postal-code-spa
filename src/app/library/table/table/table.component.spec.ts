@@ -47,14 +47,13 @@ describe('Table component ... ', () => {
   );
 
   it('should be created.',
-    async (done: DoneFn) => {
+    async (): Promise<void> => {
       const fixture: ComponentFixture<TableComponent<Table>> = TestBed.createComponent<TableComponent<Table>>(TableComponent);
 
       fixture.detectChanges();
       await fixture.whenStable();
 
       expect(fixture.componentInstance).toBeTruthy();
-      done();
     }
   );
 });

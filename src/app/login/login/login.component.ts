@@ -18,7 +18,7 @@ import { PasswordFormFieldComponent } from '../../library/password-form-field/pa
 })
 export class LoginComponent implements AfterViewInit, OnDestroy {
 
-  private end = new Subject<boolean>();
+  private readonly end: Subject<void> = new Subject<void>();
 
   public loginInProgress = false;
 
@@ -44,11 +44,11 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
       this.emailFormField.getStatusChanges(),
       this.passwordFormField.getStatusChanges()])
     .pipe(takeUntil(this.end))
-    .subscribe(
-      response => {
+    .subscribe({
+      next: (response): void => {
         this.submitButtonDisabled = response[0] !== 'VALID' || response[1] !== 'VALID';
       }
-    );
+    });
   }
 
   ngOnDestroy(): void {
@@ -61,15 +61,15 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
     this.loginService
       .login(this.emailFormField.getValue(), this.passwordFormField.getValue())
       .pipe(takeUntil(this.end))
-      .subscribe(
-        () => {
+      .subscribe({
+        next: (): void => {
           this.loginInProgress = false;
           this.router.navigate(['/city/list']);
         },
-        () => {
+        error: (): void => {
           this.loginInProgress = false;
         }
-      )
+      })
     ;
   }
 }

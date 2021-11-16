@@ -22,7 +22,7 @@ import { TextFormFieldComponent } from '../../library/text-form-field/text-form-
 })
 export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  private end = new Subject<boolean>();
+  private readonly end: Subject<void> = new Subject<void>();
 
   public saveInProgress = false;
 
@@ -58,11 +58,11 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
       this.cepFormField.getStatusChanges(),
       this.textFormField.getStatusChanges()])
     .pipe(takeUntil(this.end))
-    .subscribe(
-      response => {
+    .subscribe({
+      next: (response): void => {
         this.submitButtonDisabled = response[0] !== 'VALID' || response[1] !== 'VALID';
       }
-    );
+    });
   }
 
   ngOnDestroy(): void {
@@ -74,14 +74,14 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.activatedRoute
       .params
       .pipe(takeUntil(this.end))
-      .subscribe(
-        response => {
+      .subscribe({
+        next: (response): void => {
           const cityId = response ? response['id'] : null;
           if (cityId) {
             this.getCity(cityId);
           }
         }
-      )
+      })
     ;
   }
 
@@ -89,14 +89,14 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cityService
       .getCity(cityId)
       .pipe(takeUntil(this.end))
-      .subscribe(
-        response => {
+      .subscribe({
+        next: (response): void => {
           if (response) {
             this.cepFormField.setValue(response.zipCode);
             this.textFormField.setValue(response.name);
           }
         }
-      )
+      })
     ;
   }
 
@@ -104,11 +104,11 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cityService
       .saveCity(city)
       .pipe(takeUntil(this.end))
-      .subscribe(
-        () => {
+      .subscribe({
+        next: (): void => {
           this.router.navigate(['/city/list']);
         }
-      )
+      })
     ;
   }
 
@@ -128,11 +128,11 @@ export class CityFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loginService
       .logout()
       .pipe(takeUntil(this.end))
-      .subscribe(
-        () => {
+      .subscribe({
+        next: (): void => {
           this.router.navigate(['/login']);
         }
-      )
+      })
     ;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -21,9 +21,9 @@ import { TableComponent } from 'src/app/library/table/table/table.component';
   templateUrl: './city-list.component.html',
   styleUrls: ['./city-list.component.css']
 })
-export class CityListComponent implements AfterViewInit {
+export class CityListComponent implements AfterViewInit, OnDestroy {
 
-  private end = new Subject<boolean>();
+  private readonly end: Subject<void> = new Subject<void>();
 
   public sort = new Array<string>();
 
@@ -51,12 +51,17 @@ export class CityListComponent implements AfterViewInit {
     this.getCities(this.tableComponent.tableControl);
   }
 
+  ngOnDestroy(): void {
+    this.end.next();
+    this.end.complete();
+  }
+
   private getCities(tableControl: TableControl): void {
     this.cityService
       .getCities(tableControl)
       .pipe(takeUntil(this.end))
-      .subscribe(
-        response => {
+      .subscribe({
+        next: (response): void => {
           if (Array.isArray(response)) {
             this.tableComponent.setDataSource([...response]);
 
@@ -64,10 +69,10 @@ export class CityListComponent implements AfterViewInit {
             this.tableComponent.setDataSource(new Array<City>());
           }
         },
-        () => {
+        error: (): void => {
           this.tableComponent.setDataSource(new Array<City>());
         }
-      )
+      })
     ;
   }
 
@@ -82,11 +87,11 @@ export class CityListComponent implements AfterViewInit {
       this.cityService
         .deleteCity(element.id)
         .pipe(takeUntil(this.end))
-        .subscribe(
-          () => {
+        .subscribe({
+          next: (): void => {
             this.getCities(this.tableComponent.tableControl);
           }
-        )
+        })
       ;
     }
   }
@@ -107,11 +112,11 @@ export class CityListComponent implements AfterViewInit {
     this.loginService
       .logout()
       .pipe(takeUntil(this.end))
-      .subscribe(
-        () => {
+      .subscribe({
+        next: (): void => {
           this.router.navigate(['/login']);
         }
-      )
+      })
     ;
   }
 }
